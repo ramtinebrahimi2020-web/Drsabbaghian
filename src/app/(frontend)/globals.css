@@ -238,21 +238,21 @@ html[data-theme='light'] {
 
 @font-face {
   font-family: 'Dana';
-  src: url('/fonts/DanaFaNum-Regular.woff2') format('woff2');
+  src: url('../../../public/fonts/DanaFaNum-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Dana';
-  src: url('/fonts/DanaFaNum-DemiBold.woff2') format('woff2');
+  src: url('../../../public/fonts/DanaFaNum-DemiBold.woff2') format('woff2');
   font-weight: 600;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Peyda';
-  src: url('/fonts/PeydaWebVF.woff2') format('woff2-variations');
+  src: url('../../../public/fonts/PeydaWebVF.woff2') format('woff2-variations');
   font-weight: 100 950;
   font-style: normal;
   font-display: swap;
