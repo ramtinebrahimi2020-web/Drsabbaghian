@@ -11,13 +11,32 @@ const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : process.env.__NEXT_PRIVATE_ORIGIN || 'http://localhost:3000'
 
+// GitHub Pages serves this repository below `/Drsabbaghian`. This flag is used
+// only by the review-preview workflow; the normal Payload application keeps
+// its server configuration unchanged.
+const isStaticPreview = process.env.STATIC_PREVIEW === 'true'
+const previewBasePath = isStaticPreview ? '/Drsabbaghian' : ''
+
 const nextConfig: NextConfig = {
+  ...(isStaticPreview
+    ? {
+        output: 'export',
+        basePath: previewBasePath,
+        trailingSlash: true,
+      }
+    : {}),
   // Temporarily required on Windows until Next.js fixes Turbopack Sass resolution.
   // See: https://github.com/vercel/next.js/issues/86431
   sassOptions: {
     loadPaths: ['./node_modules/@payloadcms/ui/dist/scss/'],
   },
   images: {
+    ...(isStaticPreview
+      ? {
+          loader: 'custom',
+          loaderFile: './src/utilities/staticPreviewImageLoader.ts',
+        }
+      : {}),
     localPatterns: [
       {
         pathname: '/api/media/file/**',
@@ -54,4 +73,4 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default withPayload(nextConfig, { devBundleServerPackages: false })
+export default isStaticPreview ? nextConfig : withPayload(nextConfig, { devBundleServerPackages: false })
