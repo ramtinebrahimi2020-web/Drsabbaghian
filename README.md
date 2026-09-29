@@ -1,4 +1,39 @@
-# Payload Website Template
+# وب‌سایت دکتر علیرضا سباغیان
+
+وب‌سایت چندزبانهٔ دکتر علیرضا سباغیان، ساخته‌شده با Next.js و Payload CMS. این مخزن برای نگهداری کد و استقرار نسخه‌های آزمایشی روی GitHub و سرویس‌هایی مانند Vercel آماده شده است.
+
+## انتشار نسخهٔ آزمایشی
+
+1. در GitHub یک مخزن **Private** جدید بسازید (بدون افزودن README یا `.gitignore`).
+2. در ترمینال، داخل همین پوشه، آدرس مخزن خودتان را متصل کنید:
+
+   ```bash
+   git remote add origin https://github.com/USERNAME/REPOSITORY.git
+   git add .
+   git commit -m "feat: prepare Dr Sabbaghian website"
+   git push -u origin master
+   ```
+
+3. برای دریافت لینک قابل‌ارسال به مشتری، مخزن را در Vercel وارد کنید. پیش از Deploy، متغیرهای محیطی زیر را در تنظیمات پروژهٔ Vercel وارد کنید:
+
+   - `DATABASE_URL` — آدرس PostgreSQL محیط آنلاین
+   - `PAYLOAD_SECRET` — یک رمز تصادفی و طولانی
+   - `NEXT_PUBLIC_SERVER_URL` — دامنهٔ نهایی پروژه در Vercel
+   - `CRON_SECRET` و `PREVIEW_SECRET` — رمزهای تصادفی جداگانه
+
+فایل‌های `.env` و `.env.local` عمداً وارد Git نمی‌شوند و نباید در GitHub قرار بگیرند. مقادیر نمونه فقط در `.env.example` نگه‌داری می‌شوند.
+
+## اجرای محلی
+
+```bash
+cp .env.example .env
+pnpm install
+pnpm dev
+```
+
+سپس `http://localhost:3000` را باز کنید. برای اجرای کامل، یک PostgreSQL محلی یا یک `DATABASE_URL` معتبر نیاز است.
+
+---
 
 This is the official [Payload Website Template](https://github.com/payloadcms/payload/blob/3.x/templates/website). Use it to power websites, blogs, or portfolios from small to enterprise. This repo includes a fully-working backend, enterprise-grade admin panel, and a beautifully designed, production-ready website.
 

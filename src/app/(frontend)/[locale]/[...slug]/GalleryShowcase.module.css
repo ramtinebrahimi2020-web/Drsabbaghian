@@ -1,0 +1,144 @@
+.page { --paper: #f3f6f1; --card: #fff; --accent: #8e173b; color: var(--site-text); background: var(--site-bg); }
+:global([data-theme='dark']) .page { --paper: #102319; --card: #182e21; --accent: #e9a6b8; }
+.shell { width: min(72rem, calc(100% - 3rem)); margin-inline: auto; }
+.page h1, .page h2, .page h3, .page p, .page figure { margin: 0; }
+.page h2 { font-size: clamp(1.9rem, 3vw, 2.7rem); font-weight: 850; line-height: 1.5; text-wrap: balance; }
+.page h3 { font-family: var(--site-font-display); }
+.page p { color: var(--site-muted); line-height: 2; }
+.page a { -webkit-tap-highlight-color: transparent; }
+.page a:focus-visible { outline: 3px solid var(--site-green); outline-offset: 5px; border-radius: .35rem; }
+.page section[id], .storyCard[id] { scroll-margin-top: 2rem; }
+.eyebrow { display: inline-flex; align-items: center; gap: .65rem; color: var(--site-green); font-size: .8rem; font-weight: 650; }
+.eyebrow::before { content: ''; width: 1.7rem; height: 2px; background: var(--site-green-soft); }
+
+.hero { overflow: hidden; border-bottom: 1px solid var(--site-line); background: radial-gradient(circle at 14% 32%, rgb(142 23 59 / .07), transparent 22%), linear-gradient(120deg, var(--paper), var(--site-bg) 68%); }
+.breadcrumb { display: flex; align-items: center; gap: .8rem; padding-block: 1.2rem; color: var(--site-muted); font-size: .75rem; }
+.breadcrumb a { min-height: 2.75rem; display: inline-flex; align-items: center; }
+.breadcrumb a:hover { color: var(--site-green); }
+.heroGrid { min-height: 32rem; display: grid; grid-template-columns: .95fr 1.05fr; gap: 3.5rem; align-items: center; }
+.heroGrid > * { min-width: 0; }
+.intro { position: relative; z-index: 2; padding-block: 1rem 2.5rem; animation: arrive .65s ease-out both; }
+.intro h1 { margin-top: 1rem; font-size: clamp(2.7rem, 4.1vw, 3.75rem); line-height: 1.3; font-weight: 900; letter-spacing: -.045em; }
+.intro h1 span { color: var(--site-green); white-space: nowrap; }
+.lead { max-width: 33rem; margin-top: 1rem !important; font-size: .96rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.6rem; }
+.primaryButton, .secondaryButton { min-height: 3.2rem; display: inline-flex; align-items: center; justify-content: center; gap: .65rem; padding: .7rem 1.1rem; border-radius: .7rem; font-size: .82rem; font-weight: 650; transition: transform .2s, box-shadow .2s; }
+.primaryButton { color: var(--site-on-green); background: var(--site-green); }
+.secondaryButton { color: var(--site-green); border: 1px solid var(--site-line); background: var(--site-bg); }
+.primaryButton:hover { transform: translateY(-2px); box-shadow: 0 7px 22px rgb(18 61 38 / .18); }
+.primaryButton svg, .secondaryButton svg { width: 1rem; height: 1rem; }
+.assurances { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.35rem; color: var(--site-green); font-size: .72rem; }
+.assurances span { display: inline-flex; align-items: center; gap: .4rem; }
+.assurances svg { width: 1rem; height: 1rem; }
+
+.heroVisual { position: relative; height: 30rem; animation: arrive .8s ease-out both; }
+.heroMain, .heroInset { position: absolute; overflow: hidden; border: 1px solid var(--site-line); background: var(--paper); box-shadow: 0 18px 45px rgb(8 35 20 / .12); }
+.heroMain { inset: 1rem 0 1rem 4rem; border-radius: 7rem 1rem 1rem; }
+.heroInset { z-index: 2; width: 14rem; height: 11rem; inset-inline-start: 0; bottom: 0; border: .45rem solid var(--site-bg); border-radius: 1rem; }
+.heroMain img, .heroInset img { object-fit: cover; }
+.heroBadge { position: absolute; z-index: 3; top: 2.4rem; inset-inline-end: -1rem; display: flex; align-items: center; gap: .7rem; padding: .75rem 1rem; border: 1px solid var(--site-line); border-radius: .8rem; background: var(--card); box-shadow: 0 12px 28px rgb(8 35 20 / .12); }
+.heroBadge strong { color: var(--accent); font-size: 2rem; line-height: 1; }
+.heroBadge span { color: var(--site-green); font-size: .7rem; line-height: 1.6; }
+.heroBadge > span { display: flex; flex-direction: column; }
+:global(html[lang='en']) .intro h1 { font-size: clamp(2.55rem, 3.5vw, 3.4rem); letter-spacing: -.035em; }
+:global(html[lang='en']) .intro h1 span { white-space: normal; }
+:global(html[lang='ar']) .intro h1 { font-size: clamp(2.5rem, 3.45vw, 3.35rem); letter-spacing: -.025em; }
+:global(html[lang='ar']) .intro h1 span { white-space: normal; }
+.sectionNav { display: flex; align-items: center; gap: 1.65rem; padding-block: .6rem; border-top: 1px solid var(--site-line); font-size: .76rem; overflow-x: auto; scrollbar-width: none; }
+.sectionNav::-webkit-scrollbar { display: none; }
+.sectionNav > span { flex: 0 0 auto; color: var(--site-muted); padding-inline-end: 1.3rem; border-inline-end: 1px solid var(--site-line); }
+.sectionNav a { flex: 0 0 auto; min-height: 2.75rem; display: inline-flex; align-items: center; }
+.sectionNav a:hover { color: var(--accent); }
+
+.gallerySection { padding-block: 5.5rem; }
+.sectionHeading { display: grid; grid-template-columns: 1fr minmax(20rem, 31rem); align-items: end; gap: 4rem; margin-bottom: 2.6rem; }
+.sectionHeading h2 { margin-top: .6rem; }
+.sectionHeading > p { font-size: .9rem; }
+.storyGrid { display: grid; grid-template-columns: 1.08fr .92fr; grid-template-rows: repeat(2, 22rem); gap: 1rem; }
+.storyCard { position: relative; overflow: hidden; min-width: 0; border: 1px solid var(--site-line); border-radius: 1rem; background: var(--paper); }
+.storyFeatured { grid-row: 1 / 3; }
+.storyImage { position: absolute; inset: 0; }
+.storyImage::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgb(5 25 14 / .88), transparent 62%); }
+.storyImage img { object-fit: cover; transition: transform .45s ease; }
+.storyCard:hover .storyImage img { transform: scale(1.025); }
+.storyOverlay { position: absolute; z-index: 2; inset-inline: 1.3rem; bottom: 1.25rem; color: #fff; }
+.storyMeta { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .55rem; }
+.storyMeta span { display: inline-flex; align-items: center; gap: .45rem; font-size: .72rem; }
+.storyMeta svg { width: 1rem; height: 1rem; }
+.storyMeta small { padding: .3rem .55rem; border: 1px solid rgb(255 255 255 / .35); border-radius: 2rem; background: rgb(255 255 255 / .1); backdrop-filter: blur(6px); font-size: .62rem; }
+.storyOverlay h3 { font-size: 1.35rem; }
+.storyFeatured .storyOverlay h3 { font-size: 1.7rem; }
+.storyOverlay p { max-width: 31rem; margin-top: .3rem; color: rgb(255 255 255 / .82); font-size: .76rem; line-height: 1.8; }
+.illustrationNote { max-width: 52rem; margin-top: 1.25rem !important; padding-inline-start: .9rem; border-inline-start: 2px solid var(--accent); font-size: .72rem; }
+
+.mediaSection { padding-block: 5rem; background: var(--paper); }
+.mediaGrid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 5rem; align-items: center; }
+.mediaIntro h2 { margin-top: .65rem; }
+.mediaIntro p { margin-top: .8rem; font-size: .9rem; }
+.servicesLink { min-height: 2.75rem; display: inline-flex; align-items: center; gap: .55rem; margin-top: 1.2rem; color: var(--site-green); font-size: .8rem; font-weight: 650; }
+.servicesLink:hover { text-decoration: underline; text-underline-offset: .4rem; }
+.servicesLink svg { width: 1rem; height: 1rem; }
+.mediaCards { display: grid; gap: 1rem; }
+.mediaCards article { display: flex; gap: 1rem; padding: 1.35rem; border: 1px solid var(--site-line); border-radius: 1rem; background: var(--card); }
+.mediaCards article > span { flex: 0 0 auto; width: 3rem; height: 3rem; display: grid; place-items: center; border-radius: 50%; color: var(--site-green); background: var(--paper); }
+.mediaCards svg { width: 1.35rem; height: 1.35rem; }
+.mediaCards h3 { font-size: 1.08rem; }
+.mediaCards p { margin-top: .25rem; font-size: .78rem; }
+
+.privacySection { display: flex; align-items: flex-start; gap: 1.25rem; margin-block: 4.5rem; padding: 1.7rem; border: 1px solid var(--site-line); border-inline-start: 4px solid var(--accent); border-radius: 1rem; background: var(--card); }
+.privacySection > svg { flex: 0 0 auto; width: 2.2rem; height: 2.2rem; color: var(--accent); }
+.privacySection h2 { font-size: 1.25rem; }
+.privacySection p { margin-top: .25rem; font-size: .8rem; }
+
+@keyframes arrive { from { opacity: .25; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 1050px) {
+  .heroGrid { gap: 2rem; }
+  .intro h1 { font-size: 3rem; }
+  .heroMain { inset-inline-start: 2rem; }
+  .mediaGrid { gap: 3rem; }
+}
+
+@media (max-width: 760px) {
+  .shell { width: calc(100% - 2.5rem); }
+  .breadcrumb { padding-block: .5rem; }
+  .heroGrid { min-height: 0; grid-template-columns: 1fr; gap: .5rem; }
+  .intro { padding-block: 1rem 2rem; text-align: center; }
+  .intro .eyebrow { justify-content: center; }
+  .intro h1 { font-size: clamp(2.05rem, 9.2vw, 2.55rem); line-height: 1.38; }
+  .intro h1 span { white-space: normal; }
+  .lead { margin-inline: auto; }
+  .actions, .assurances { justify-content: center; }
+  .heroVisual { width: min(100%, 30rem); height: 23rem; justify-self: center; }
+  .heroMain { inset: 0 0 2rem 2.5rem; border-radius: 5rem 1rem 1rem; }
+  .heroInset { width: 10.5rem; height: 8rem; }
+  .heroBadge { top: 1rem; inset-inline-end: -.4rem; }
+  .sectionNav { gap: 1.2rem; }
+  .sectionNav > span { display: none; }
+  .gallerySection, .mediaSection { padding-block: 3.5rem; }
+  .sectionHeading { grid-template-columns: 1fr; gap: .8rem; margin-bottom: 1.8rem; }
+  .page h2 { font-size: 1.9rem; }
+  .sectionHeading > p { font-size: .85rem; }
+  .storyGrid { grid-template-columns: 1fr; grid-template-rows: none; }
+  .storyCard, .storyFeatured { min-height: 24rem; grid-row: auto; }
+  .storyFeatured .storyOverlay h3 { font-size: 1.35rem; }
+  .mediaGrid { grid-template-columns: 1fr; gap: 2rem; }
+  .privacySection { margin-block: 3rem; }
+}
+
+@media (max-width: 430px) {
+  .primaryButton, .secondaryButton { padding-inline: .75rem; font-size: .76rem; }
+  .heroVisual { height: 20rem; }
+  .heroMain { inset-inline-start: 1.5rem; }
+  .heroInset { width: 8.5rem; height: 6.5rem; }
+  .heroBadge { padding: .6rem .8rem; }
+  .storyCard, .storyFeatured { min-height: 21rem; }
+  .storyOverlay { inset-inline: 1rem; bottom: 1rem; }
+  .storyOverlay p { font-size: .72rem; }
+  .privacySection { padding: 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *, .page *::before, .page *::after { animation: none !important; transition: none !important; }
+  .storyCard:hover .storyImage img, .primaryButton:hover { transform: none; }
+}

@@ -1,0 +1,184 @@
+.page {
+  --paper: #f5f7f1;
+  --card: #fff;
+  --photo: #eef1e8;
+  --accent: #8e173b;
+  color: var(--site-text);
+  background: var(--site-bg);
+}
+
+:global([data-theme='dark']) .page {
+  --paper: #11251a;
+  --card: #182e21;
+  --photo: #e8e8df;
+  --accent: #e9a6b8;
+}
+
+.shell { width: min(72rem, calc(100% - 3rem)); margin-inline: auto; }
+.page h1, .page h2, .page h3, .page p, .page figure { margin: 0; }
+.page h2 { font-size: clamp(1.9rem, 3vw, 2.65rem); font-weight: 850; line-height: 1.5; text-wrap: balance; }
+.page h3 { font-family: var(--site-font-display); }
+.page p { color: var(--site-muted); line-height: 2; }
+.page a { -webkit-tap-highlight-color: transparent; }
+.page a:focus-visible { outline: 3px solid var(--site-green); outline-offset: 5px; border-radius: .35rem; }
+.page section[id] { scroll-margin-top: 2rem; }
+.ltr { direction: ltr; }
+.rtl { direction: rtl; }
+.ltr .intro h1 { line-height: 1.12; letter-spacing: -.04em; }
+.ltr .cardBody h3 { line-height: 1.4; }
+
+.eyebrow { display: inline-flex; align-items: center; gap: .65rem; color: var(--site-green); font-size: .8rem; font-weight: 650; }
+.eyebrow::before { content: ''; width: 1.7rem; height: 2px; background: var(--site-green-soft); }
+.hero { overflow: hidden; background: radial-gradient(circle at 18% 36%, rgb(124 162 97 / .11), transparent 24%), linear-gradient(120deg, var(--paper), var(--site-bg) 66%); border-bottom: 1px solid var(--site-line); }
+.breadcrumb { display: flex; align-items: center; gap: .8rem; padding-block: 1.5rem; color: var(--site-muted); font-size: .75rem; }
+.breadcrumb a { min-height: 2.75rem; display: inline-flex; align-items: center; }
+.breadcrumb a:hover { color: var(--site-green); }
+.heroGrid { min-height: 32rem; display: grid; grid-template-columns: .92fr 1.08fr; gap: 4rem; align-items: center; }
+.heroGrid > * { min-width: 0; }
+.intro { position: relative; z-index: 2; padding-block: 1rem 3rem; animation: arrive .65s ease-out both; }
+.intro h1 { margin-top: 1rem; font-size: clamp(2.8rem, 4.2vw, 3.8rem); font-weight: 900; line-height: 1.28; letter-spacing: -.05em; }
+.intro h1 span { color: var(--site-green); white-space: nowrap; }
+.lead { max-width: 31rem; margin-top: 1rem !important; font-size: 1rem; }
+.philosophy { max-width: 31rem; margin-top: 1rem !important; padding-inline-start: 1rem; border-inline-start: 2px solid var(--accent); font-size: .9rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.7rem; }
+.primaryButton, .secondaryButton, .contactButton { min-height: 3.25rem; display: inline-flex; align-items: center; justify-content: center; gap: .7rem; padding: .7rem 1.15rem; border-radius: .7rem; font-size: .85rem; font-weight: 650; transition: transform .2s, box-shadow .2s, background-color .2s; }
+.primaryButton { color: var(--site-on-green); background: var(--site-green); }
+.secondaryButton { color: var(--site-green); background: var(--site-bg); border: 1px solid var(--site-line); }
+.primaryButton:hover, .contactButton:hover { transform: translateY(-2px); box-shadow: 0 7px 22px rgb(18 61 38 / .18); }
+.primaryButton svg, .secondaryButton svg, .contactButton svg { width: 1rem; height: 1rem; }
+.principles { display: flex; flex-wrap: wrap; gap: .55rem 1.2rem; margin-top: 1.5rem; color: var(--site-green); font-size: .73rem; }
+.principles span { display: inline-flex; align-items: center; gap: .45rem; }
+.principles span::before { content: ''; width: .3rem; height: .3rem; border-radius: 50%; background: var(--site-green-soft); }
+
+.atlas { position: relative; height: 32rem; isolation: isolate; animation: arrive .8s ease-out both; }
+.atlasMedia { position: absolute; inset: .5rem 2rem 1rem; overflow: hidden; border-radius: 15rem 1.4rem 1.4rem; background: var(--photo); border: 1px solid var(--site-line); }
+.anatomy { object-fit: cover; object-position: center 48%; mix-blend-mode: multiply; }
+:global([data-theme='dark']) .anatomy { filter: brightness(.88) contrast(1.03); }
+.atlasCaption { position: absolute; z-index: 2; inset-inline: 3.5rem; bottom: 2rem; display: grid; gap: .2rem; padding: .9rem 1.1rem; border: 1px solid var(--site-line); border-radius: .8rem; background: var(--card); box-shadow: 0 12px 30px rgb(8 35 20 / .1); }
+.atlasCaption span { color: var(--site-muted); font-size: .68rem; }
+.atlasCaption strong { font-size: .88rem; font-weight: 650; }
+.atlasMarker { position: absolute; z-index: 3; min-width: 8.5rem; display: grid; gap: .15rem; padding: .7rem .85rem; border: 1px solid var(--site-line); border-radius: .7rem; background: var(--card); box-shadow: 0 12px 28px rgb(8 35 20 / .09); }
+.atlasMarker::after { content: ''; position: absolute; top: 50%; width: 3rem; height: 1px; background: var(--site-green-soft); }
+.atlasMarker span { color: var(--accent); font-size: .65rem; }
+.atlasMarker strong { color: var(--site-green); font-size: .8rem; }
+.markerTop { top: 5.5rem; inset-inline-end: 0; }
+.markerTop::after { inset-inline-end: 100%; }
+.markerBottom { bottom: 7.5rem; inset-inline-start: 0; }
+.markerBottom::after { inset-inline-start: 100%; }
+.sectionNav { display: flex; align-items: center; gap: 2rem; padding-block: .65rem; border-top: 1px solid var(--site-line); font-size: .8rem; }
+.sectionNav > span { color: var(--site-muted); padding-inline-end: 1.5rem; border-inline-end: 1px solid var(--site-line); }
+.sectionNav a { min-height: 2.75rem; display: inline-flex; align-items: center; }
+.sectionNav a:hover { color: var(--accent); }
+
+.fieldsSection { padding-block: 5.5rem; }
+.sectionHeading, .pathwayHeading { display: grid; grid-template-columns: 1fr minmax(20rem, 31rem); align-items: end; gap: 4rem; margin-bottom: 2.4rem; }
+.sectionHeading h2, .pathwayHeading h2 { margin-top: .6rem; }
+.sectionHeading > p, .pathwayHeading > p { font-size: .92rem; }
+.serviceCards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.serviceCard { min-width: 0; overflow: hidden; display: grid; grid-template-columns: minmax(10rem, .8fr) 1.2fr; border: 1px solid var(--site-line); border-radius: 1.2rem; background: var(--paper); transition: border-color .2s, box-shadow .2s, transform .2s; }
+.serviceCard:hover { border-color: var(--site-green); box-shadow: 0 12px 32px rgb(16 55 34 / .1); transform: translateY(-3px); }
+.cardImage { min-height: 27rem; position: relative; overflow: hidden; background: #faf7ef; }
+.cardImage img { object-fit: cover; transition: transform .45s ease; }
+.serviceCard:hover .cardImage img { transform: scale(1.025); }
+.cardNumber { position: absolute; top: 1rem; inset-inline-start: 1rem; min-width: 2.45rem; height: 2.45rem; display: grid; place-items: center; border-radius: 50%; color: var(--site-green); background: rgb(255 255 255 / .9); font-family: var(--site-font-display); font-size: .8rem; box-shadow: 0 5px 20px rgb(17 54 33 / .12); }
+.cardBody { align-self: center; padding: 2rem; }
+.cardIcon { width: 2.75rem; height: 2.75rem; display: grid; place-items: center; margin-bottom: 1rem; border-radius: 50%; color: var(--site-green); background: var(--card); }
+.cardIcon svg { width: 1.45rem; height: 1.45rem; stroke-width: 1.45; }
+.cardBody h3 { font-size: 1.45rem; line-height: 1.6; }
+.cardBody > p { margin-top: .6rem; font-size: .84rem; }
+.cardBody ul { display: grid; gap: .55rem; margin: 1.1rem 0 0; padding: 1rem 0 0; border-top: 1px solid var(--site-line); list-style: none; color: var(--site-muted); font-size: .78rem; }
+.cardBody li { display: flex; align-items: center; gap: .55rem; }
+.cardBody li svg { flex: 0 0 auto; width: .95rem; height: .95rem; color: var(--site-green); }
+.cardLink { min-height: 2.75rem; display: inline-flex; align-items: center; gap: .55rem; margin-top: 1.2rem; color: var(--site-green); font-size: .78rem; font-weight: 650; }
+.serviceCard:hover .cardLink { text-decoration: underline; text-underline-offset: .4rem; }
+.cardLink svg { width: 1rem; height: 1rem; }
+
+.pathwaySection { padding-block: 5rem; background: var(--paper); }
+.pathway { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; padding: 0; list-style: none; }
+.pathway li { position: relative; padding-inline: 2rem; border-inline-start: 1px solid var(--site-line); }
+.pathway li:first-child { padding-inline-start: 0; border: 0; }
+.pathway li:last-child { padding-inline-end: 0; }
+.stepTop { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; }
+.stepTop span { color: var(--accent); font-size: .72rem; }
+.stepTop svg { width: 1.75rem; height: 1.75rem; color: var(--site-green); stroke-width: 1.45; }
+.pathway h3 { font-size: 1.2rem; }
+.pathway p { margin-top: .45rem; font-size: .84rem; }
+.medicalNote { max-width: 52rem; display: flex; gap: .8rem; margin-top: 2.7rem; padding: 1.1rem 1.25rem; border: 1px solid var(--site-line); border-inline-start: 3px solid var(--accent); border-radius: .65rem; background: var(--card); }
+.medicalNote svg { flex: 0 0 auto; width: 1.2rem; height: 1.2rem; margin-top: .35rem; color: var(--accent); }
+.medicalNote p { font-size: .77rem; }
+.medicalNote strong { color: var(--site-text); margin-inline-end: .35rem; }
+
+.contactSection { display: flex; align-items: center; justify-content: space-between; gap: 4rem; padding-block: 4rem 5rem; }
+.contactSection > div { max-width: 42rem; }
+.contactSection h2 { margin-top: .6rem; }
+.contactSection p { margin-top: .6rem; font-size: .9rem; }
+.contactButton { flex: 0 0 auto; color: var(--site-on-green); background: var(--site-green); }
+
+@keyframes arrive { from { opacity: .25; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 1100px) {
+  .heroGrid { gap: 1.5rem; }
+  .intro h1 { font-size: 3.15rem; }
+  .atlas { height: 30rem; }
+  .atlasMedia { inset-inline: 1rem; }
+  .serviceCard { grid-template-columns: 9rem 1fr; }
+  .cardImage { min-height: 28rem; }
+  .cardBody { padding: 1.4rem; }
+}
+
+@media (max-width: 760px) {
+  .shell { width: calc(100% - 2.5rem); }
+  .breadcrumb { padding-block: .5rem; }
+  .heroGrid { min-height: 0; grid-template-columns: 1fr; gap: 0; }
+  .intro { padding-block: 1rem 2rem; text-align: center; }
+  .intro .eyebrow { justify-content: center; }
+  .intro h1 { font-size: clamp(2.25rem, 10vw, 2.75rem); line-height: 1.32; }
+  .lead, .philosophy { margin-inline: auto; }
+  .philosophy { padding: 0; border: 0; }
+  .actions { justify-content: center; }
+  .principles { justify-content: center; }
+  .atlas { width: min(100%, 27rem); height: 29rem; justify-self: center; }
+  .atlasMedia { inset: 1rem 0 1.5rem; border-start-start-radius: 10rem; }
+  .atlasCaption { inset-inline: 1rem; bottom: 2.5rem; }
+  .atlasMarker { min-width: 7rem; padding: .55rem .7rem; }
+  .atlasMarker::after { width: 1.5rem; }
+  .markerTop { top: 6rem; }
+  .markerBottom { bottom: 8.5rem; }
+  .sectionNav { justify-content: space-between; gap: .5rem; }
+  .sectionNav > span { display: none; }
+  .sectionNav a { font-size: .72rem; }
+  .fieldsSection { padding-block: 3.5rem; }
+  .sectionHeading, .pathwayHeading { grid-template-columns: 1fr; gap: .9rem; margin-bottom: 1.7rem; }
+  .page h2 { font-size: 1.9rem; }
+  .sectionHeading > p, .pathwayHeading > p { font-size: .87rem; }
+  .serviceCards { grid-template-columns: 1fr; gap: 1rem; }
+  .serviceCard { grid-template-columns: 8.5rem 1fr; }
+  .cardImage { min-height: 25rem; }
+  .pathwaySection { padding-block: 3.5rem; }
+  .pathway { grid-template-columns: 1fr; gap: 1.4rem; }
+  .pathway li, .pathway li:first-child { padding: 0 0 1.4rem; border: 0; border-bottom: 1px solid var(--site-line); }
+  .pathway li:last-child { padding: 0; border: 0; }
+  .stepTop { margin-bottom: .7rem; }
+  .medicalNote { margin-top: 2rem; }
+  .contactSection { align-items: stretch; flex-direction: column; gap: 1.5rem; padding-block: 3rem 4rem; }
+  .contactButton { width: 100%; }
+}
+
+@media (max-width: 430px) {
+  .primaryButton, .secondaryButton { padding-inline: .8rem; font-size: .78rem; }
+  .atlas { height: 26rem; }
+  .atlasCaption { bottom: 1.8rem; }
+  .markerBottom { bottom: 7rem; }
+  .sectionNav { display: grid; grid-template-columns: 1fr 1fr; }
+  .sectionNav a:last-child { grid-column: 1 / -1; justify-self: center; }
+  .serviceCard { grid-template-columns: 1fr; }
+  .cardImage { min-height: 15rem; }
+  .cardImage img { object-position: center 45%; }
+  .cardBody { padding: 1.25rem; }
+  .cardBody h3 { font-size: 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *, .page *::before, .page *::after { animation: none !important; transition: none !important; }
+  .serviceCard:hover, .serviceCard:hover .cardImage img, .primaryButton:hover, .contactButton:hover { transform: none; }
+}

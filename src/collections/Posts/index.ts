@@ -26,6 +26,7 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from 'payload'
+import { translationWorkflowFields } from '../../fields/translationWorkflow'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
@@ -69,6 +70,7 @@ export const Posts: CollectionConfig<'posts'> = {
     {
       name: 'title',
       type: 'text',
+      localized: true,
       required: true,
     },
     {
@@ -97,6 +99,7 @@ export const Posts: CollectionConfig<'posts'> = {
                 },
               }),
               label: false,
+              localized: true,
               required: true,
             },
           ],
@@ -190,6 +193,7 @@ export const Posts: CollectionConfig<'posts'> = {
       hasMany: true,
       relationTo: 'users',
     },
+    ...translationWorkflowFields,
     // This field is only used to populate the user data via the `populateAuthors` hook
     // This is because the `user` collection has access control locked to protect user privacy
     // GraphQL will also not return mutated user data that differs from the underlying schema

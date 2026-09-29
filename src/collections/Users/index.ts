@@ -21,6 +21,17 @@ export const Users: CollectionConfig = {
       name: 'name',
       type: 'text',
     },
+    {
+      name: 'role',
+      type: 'select',
+      defaultValue: 'editor',
+      options: [
+        { label: 'Administrator', value: 'admin' },
+        { label: 'Content editor', value: 'editor' },
+        { label: 'Medical reviewer', value: 'medical-reviewer' },
+        { label: 'Language reviewer', value: 'language-reviewer' },
+      ],
+    },
   ],
   timestamps: true,
 }

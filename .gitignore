@@ -3,6 +3,8 @@ dist / media
 node_modules
 .DS_Store
 .env
+.env.*
+!.env.example
 .next
 next-env.d.ts
 .vercel
@@ -20,3 +22,7 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Local TypeScript and test output
+*.tsbuildinfo
+coverage/
