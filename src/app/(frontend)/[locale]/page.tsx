@@ -16,7 +16,7 @@ const heroMotionLabel = {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   if (!isLocale(locale)) return {}
-  const specialty = locale === 'fa' ? 'متخصص جراحی استخوان و مفاصل' : locale === 'ar' ? 'اختصاصي جراحة العظام والمفاصل' : 'Orthopaedic Surgeon'
+  const specialty = locale === 'fa' ? 'متخصص جراحی استخوان و مفاصل' : locale === 'ar' ? 'اختصاصي جراحة العظام والمفاصل' : 'Orthopedic Surgeon'
   return { title: { absolute: `${content[locale].heroTitle} | ${specialty}` }, description: content[locale].heroText, alternates: localeAlternates(locale) }
 }
 

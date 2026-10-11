@@ -17,7 +17,7 @@ export const Services: CollectionConfig = {
       name: 'category',
       type: 'select',
       options: [
-        { label: 'Knee and hip replacement', value: 'joint-replacement' },
+        { label: 'Knee ,Hip and trauma surgery', value: 'joint-replacement' },
         { label: 'Arthroscopy and sports knee injuries', value: 'sports-knee' },
       ],
       required: true,

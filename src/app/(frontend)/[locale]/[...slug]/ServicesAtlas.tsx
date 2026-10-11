@@ -38,7 +38,7 @@ const copy = {
     next: 'قدم بعدی', contactTitle: 'برای بررسی شرایط و هماهنگی مراجعه', contactText: 'زمان مراجعه پس از ارتباط با تیم پذیرش و دریافت اطلاعات اولیه هماهنگ می‌شود.', contactAction: 'اطلاعات مطب و درخواست نوبت',
   },
   en: {
-    home: 'Home', services: 'Specialized services', title: ['Orthopaedic', 'surgical services'],
+    home: 'Home', services: 'Specialized services', title: ['Orthopedic', 'surgical services'],
     philosophy: 'Careful assessment, clear discussion, and a care path suited to each patient.', appointment: 'Request an appointment', viewFields: 'Explore services',
     principles: ['Careful assessment', 'Informed decisions', 'Return to activity'], anatomyAlt: 'Anatomical view of the knee joint', anatomyLabel: 'Knee joint anatomy', anatomyText: 'Clear understanding supports informed decisions',
     markerOne: 'Joint replacement', markerTwo: 'Arthroscopy', onPage: 'On this page', fieldsNav: 'Specialist fields', pathwayNav: 'Decision pathway', contactNav: 'Arrange a visit',

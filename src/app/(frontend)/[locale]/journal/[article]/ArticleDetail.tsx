@@ -31,10 +31,10 @@ const copy = {
     continue: 'ادامه مطالعه', relatedTitle: 'اطلاعات تکمیلی درباره مسیر درمان', relatedText: 'برای آشنایی با ارزیابی، آمادگی و پیگیری تعویض مفصل زانو می‌توانید راهنمای خدمت را ببینید.', relatedLink: 'مطالعه راهنمای تعویض مفصل زانو',
   },
   en: {
-    home: 'Home', journal: 'Health journal', topic: 'Knee replacement', category: 'Knee and hip replacement',
+    home: 'Home', journal: 'Health journal', topic: 'Knee replacement', category: 'Knee ,Hip and trauma surgery',
     title: 'When may knee replacement evaluation be considered?',
     dek: 'General guidance on symptoms that may prompt a specialist assessment and the information considered before choosing a treatment path.',
-    initials: 'AS', author: 'Dr. Alireza Sabbaghian', role: 'Orthopaedic surgeon', readTime: 'About 6 minutes', reviewed: 'Clinically reviewed',
+    initials: 'AS', author: 'Dr. Alireza Sabbaghian', role: 'Orthopedic surgeon', readTime: 'About 6 minutes', reviewed: 'Clinically reviewed',
     coverAlt: 'Knee surgery equipment being prepared in a clinical setting', coverCaption: 'Treatment decisions bring together the history, examination, imaging, and the patient’s movement needs.',
     tocTitle: 'In this article', toc: ['A short answer', 'Symptoms to consider', 'Specialist assessment', 'How decisions are made', 'Preparing for a visit'],
     lead: 'Knee pain and reduced movement can have many causes. Considering a knee replacement assessment does not mean that surgery has already been chosen. It is an opportunity to understand the symptoms, review previous care, and discuss the available options.',

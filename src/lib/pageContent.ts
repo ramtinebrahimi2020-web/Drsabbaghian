@@ -24,8 +24,8 @@ export const pageContent: Record<Locale, Record<string, InfoPage>> = {
       { title: 'تجربه جراحی', text: 'بر اساس اطلاعات ثبت‌شده تا سال ۱۴۰۵، بیش از ۲٬۰۰۰ عمل تعویض مفصل زانو، بیش از ۸۰۰ عمل تعویض مفصل لگن و بیش از ۱٬۰۰۰ عمل آرتروسکوپی زانو انجام شده است.', items: ['حدود ۶۰ عمل جراحی رویژن زانو'] },
     ] },
     services: { kicker: 'خدمات تخصصی', title: 'خدمات جراحی استخوان و مفاصل', lead: 'اطلاعات اولیه درباره دو حوزه محوری فعالیت و خدمات تکمیلی مرتبط.', sections: [
-      { title: 'تعویض مفصل زانو و لگن', text: 'ارزیابی درد و محدودیت عملکرد، بررسی گزینه‌های درمانی و آشنایی با مسیر عمومی مراقبت پیش و پس از جراحی.', items: ['تعویض مفصل زانو', 'تعویض مفصل لگن', 'بررسی جراحی مجدد مفصل'] },
-      { title: 'آرتروسکوپی و آسیب‌های ورزشی زانو', text: 'بررسی آسیب‌های لیگامانی و مشکلات داخل مفصل و انتخاب روش درمان بر اساس معاینه و نیاز هر فرد.', items: ['آسیب رباط صلیبی', 'آسیب‌های ورزشی زانو', 'آرتروسکوپی زانو'] },
+      { title: 'تعویض مفصل زانو و لگن', text: 'ارزیابی درد و محدودیت عملکرد، بررسی گزینه‌های درمانی و آشنایی با مسیر عمومی مراقبت قبل و بعد از جراحی.', items: ['تعویض مفصل زانو', 'تعویض مفصل لگن', 'بررسی جراحی مجدد مفصل'] },
+      { title: 'آرتروسکوپی و آسیب‌های ورزشی زانو', text: 'بررسی آسیب‌های داخل مفصلی و انتخاب دقیق تر مسیر درمان بر اساس نوع آسیب برای بدست آوردن بهترین نتیجه', items: ['آسیب رباط صلیبی', 'آسیب‌های ورزشی زانو', 'آرتروسکوپی زانو'] },
     ] },
     'international-patients': { kicker: 'بیماران بین‌المللی', title: 'راهنمای هماهنگی مراجعه از خارج ایران', lead: 'این راهنما مراحل اولیه ارتباط، بررسی مدارک و برنامه‌ریزی مراجعه را توضیح می‌دهد.', sections: [
       { title: '۱. ارسال درخواست اولیه', text: 'اطلاعات تماس، شرح کوتاه مشکل و درخواست اصلی از طریق کانال رسمی ارسال می‌شود.' },
@@ -50,14 +50,14 @@ export const pageContent: Record<Locale, Record<string, InfoPage>> = {
     ] },
   },
   en: {
-    about: { kicker: 'About the physician', title: 'Dr. Alireza Sabbaghian', lead: 'An orthopaedic surgeon in specialist practice since 1997, with a focus on knee surgery and joint replacement.', sections: [
+    about: { kicker: 'About the physician', title: 'Dr. Alireza Sabbaghian', lead: 'An orthopedic surgeon in specialist practice since 1997, with a focus on knee surgery and joint replacement.', sections: [
       { title: 'Professional approach', text: 'A clear understanding of each patient’s condition, an open discussion of options, and individual needs guide the care-planning process.' },
-      { title: 'Main fields of practice', text: 'The principal fields are knee and hip joint replacement, knee arthroscopy, and sports-related knee injuries.', items: ['Knee and hip replacement', 'Knee arthroscopy', 'Sports knee injuries'] },
-      { title: 'Professional background', text: 'He graduated in general medicine in 1990 and has practised orthopaedics since 1997. His background includes four years at Zanjan University of Medical Sciences and surgical practice at Laleh Hospital, Tehran Clinic Hospital, and Valiasr Hospital.', items: ['Currently practising at Laleh Hospital and Tehran Clinic Hospital', 'Member of the board of Laleh Hospital'] },
-      { title: 'Memberships and scientific activity', text: 'Member of the Iranian Orthopaedic Association and the Iranian Knee Surgeons Association, with presentations at annual orthopaedic congresses, attendance at approximately 20 international congresses, and supervision of three doctoral theses.', items: ['Completed a knee surgery fellowship programme in Austria', 'Four years of teaching activity at Zanjan University of Medical Sciences'] },
+      { title: 'Main fields of practice', text: 'The principal fields are knee and hip joint replacement, knee arthroscopy, and sports-related knee injuries.', items: ['Knee ,Hip and trauma surgery', 'Knee arthroscopy', 'Sports knee injuries'] },
+      { title: 'Professional background', text: 'He graduated in general medicine in 1990 and has practised orthopedics since 1997. His background includes four years at Zanjan University of Medical Sciences and surgical practice at Laleh Hospital, Tehran Clinic Hospital, and Valiasr Hospital.', items: ['Currently practising at Laleh Hospital and Tehran Clinic Hospital', 'Member of the board of Laleh Hospital'] },
+      { title: 'Memberships and scientific activity', text: 'Member of the Iranian Orthopedic Association and the Iranian Knee Surgeons Association, with presentations at annual orthopedic congresses, attendance at approximately 20 international congresses, and supervision of three doctoral theses.', items: ['Completed a knee surgery fellowship programme in Austria', 'Four years of teaching activity at Zanjan University of Medical Sciences'] },
       { title: 'Surgical experience', text: 'According to records provided up to 2026, his experience includes more than 2,000 knee replacements, more than 800 hip replacements, and more than 1,000 knee arthroscopy procedures.', items: ['Approximately 60 revision knee procedures'] },
     ] },
-    services: { kicker: 'Specialized services', title: 'Orthopaedic surgical services', lead: 'Introductory information about the two main fields of practice and related services.', sections: [
+    services: { kicker: 'Specialized services', title: 'Orthopedic surgical services', lead: 'Introductory information about the two main fields of practice and related services.', sections: [
       { title: 'Knee and hip joint replacement', text: 'Assessment of pain and mobility, review of treatment options, and general information about care before and after surgery.', items: ['Knee replacement', 'Hip replacement', 'Revision joint assessment'] },
       { title: 'Arthroscopy and sports knee injuries', text: 'Assessment of ligament and intra-articular injuries, with treatment planning based on examination and individual needs.', items: ['Anterior cruciate ligament injury', 'Sports knee injuries', 'Knee arthroscopy'] },
     ] },
@@ -69,7 +69,7 @@ export const pageContent: Record<Locale, Record<string, InfoPage>> = {
       { title: '5. Visit coordination', text: 'The date and location are confirmed by the coordination team after the review is complete.' },
     ] },
     journal: { kicker: 'Health journal', title: 'Reviewed educational articles', lead: 'General information about joint health, knee injuries, preparation for treatment, and follow-up care.', sections: [
-      { title: 'Knee and hip replacement', text: 'Articles about evaluation, general preparation, and care after treatment.' },
+      { title: 'Knee ,Hip and trauma surgery', text: 'Articles about evaluation, general preparation, and care after treatment.' },
       { title: 'Arthroscopy and knee injuries', text: 'General information about sports injuries and their assessment.' },
       { title: 'Preparation and care', text: 'Practical guides for preparing for a visit and follow-up.' },
     ] },

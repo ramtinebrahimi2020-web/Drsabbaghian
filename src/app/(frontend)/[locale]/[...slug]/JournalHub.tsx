@@ -36,7 +36,7 @@ const copy = {
   },
   en: {
     home: 'Home', pageName: 'Health journal', title: ['Health education', 'reviewed with care'], featuredAction: 'Read the featured article', topicsAction: 'Journal topics',
-    assurances: ['Patient education', 'Transparent sources and review'], imageAlt: 'Knee joint and replacement implant', featured: 'Featured article', readingTime: 'Short read', category: 'Knee and hip replacement',
+    assurances: ['Patient education', 'Transparent sources and review'], imageAlt: 'Knee joint and replacement implant', featured: 'Featured article', readingTime: 'Short read', category: 'Knee ,Hip and trauma surgery',
     articleTitle: 'When may knee replacement evaluation be considered?', articleSummary: 'A general overview of factors that may be considered when assessing knee pain and functional limitations.', readArticle: 'Read the article',
     onPage: 'On this page', featuredNav: 'Featured article', topicsNav: 'Journal topics', standardsNav: 'Editorial standards', topicsKicker: 'Reading paths', topicsTitle: 'Explore articles by topic', topicsLead: 'Each section offers general education and helps patients prepare for a clearer discussion with their physician.',
     related: 'View related article', moreTopics: 'More articles in this topic', standardsKicker: 'Editorial standards', standardsTitle: 'How is the information presented?', standardsLead: 'The journal provides clear, responsible general information about joint health and assessment pathways.',
