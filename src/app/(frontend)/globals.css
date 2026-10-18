@@ -342,6 +342,7 @@ h1,h2 { font-family: var(--site-font-display); color: var(--site-text); line-hei
 [dir='rtl'] .hero-portrait::before { right: -1.25rem; left: calc((100vw - min(72rem, calc(100vw - 3rem))) / -2); }
 [dir='ltr'] .hero-portrait::before { right: calc((100vw - min(72rem, calc(100vw - 3rem))) / -2); left: -1.25rem; border-radius: 10rem 0 0 4.25rem; box-shadow: -1.1rem 1.4rem 2.75rem -1.4rem rgb(15 52 40 / .3); }
 .hero-doctor { z-index: 3; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 1.2rem 1.3rem rgb(7 25 17 / .2)); transform: scale(.99); transform-origin: center bottom; }
+.hero-doctor-fa { translate: 0 4.55%; }
 .hero-motion-label {
   z-index: 5;
   aspect-ratio: 1;
