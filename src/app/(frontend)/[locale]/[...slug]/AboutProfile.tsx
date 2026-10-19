@@ -13,6 +13,7 @@ const profileCopy = {
     role: 'متخصص جراحی استخوان و مفاصل', lead: 'با سابقه فعالیت تخصصی از سال ۱۳۷۶، با تمرکز بر جراحی زانو، تعویض مفصل و آسیب‌های ورزشی زانو.',
     appointment: 'هماهنگی مراجعه', journeyAction: 'مسیر حرفه‌ای', registration: 'شماره نظام پزشکی',
     portraitAlt: 'پرتره دکتر علیرضا صباغیان', portraitLabel: 'تجربه، دانش و توجه به بیمار', focusLabel: 'تمرکز حرفه‌ای', focus: 'جراحی زانو و تعویض مفصل',
+    clinicalKicker: 'در فضای جراحی', clinicalTitle: 'تجربه بالینی، در متن کار روزمره', clinicalText: 'بخش مهمی از مسیر حرفه‌ای دکتر صباغیان در اتاق عمل و در کنار تیم‌های درمانی شکل گرفته است؛ فضایی که دقت، هماهنگی و تصمیم‌گیری مسئولانه در آن اهمیت اساسی دارد.', clinicalAlt: 'دکتر علیرضا صباغیان در فضای اتاق عمل', clinicalCaption: 'در محیط اتاق عمل',
     navLabel: 'در این صفحه', nav: ['رویکرد درمانی', 'سوابق و فعالیت علمی', 'تجربه جراحی', 'حوزه‌های فعالیت'],
     approachKicker: 'رویکرد حرفه‌ای', approachTitle: ['هر بیمار،', 'شرایط و نیازهای خودش را دارد.'],
     approachText: 'شناخت دقیق شرایط بیمار، گفت‌وگوی روشن درباره گزینه‌ها و درنظرگرفتن نیازهای فردی، بخش اصلی مسیر تصمیم‌گیری درمانی است.',
@@ -48,6 +49,7 @@ const profileCopy = {
     role: 'Orthopedic surgeon', lead: 'In specialist practice since 1997, with a focus on knee surgery, joint replacement, and sports-related knee injuries.',
     appointment: 'Arrange a consultation', journeyAction: 'Professional journey', registration: 'Medical registration no.',
     portraitAlt: 'Portrait of Dr. Alireza Sabbaghian', portraitLabel: 'Experience, knowledge, and attention to each patient', focusLabel: 'Professional focus', focus: 'Knee surgery and joint replacement',
+    clinicalKicker: 'In the operating room', clinicalTitle: 'Clinical experience, grounded in daily practice', clinicalText: 'An important part of Dr. Sabbaghian’s professional journey has developed in the operating room alongside clinical teams, where precision, coordination, and responsible decisions are essential.', clinicalAlt: 'Dr. Alireza Sabbaghian in an operating room', clinicalCaption: 'In the operating-room environment',
     navLabel: 'On this page', nav: ['Care approach', 'Background and scientific work', 'Surgical experience', 'Fields of practice'],
     approachKicker: 'Professional approach', approachTitle: ['Each patient has individual', 'circumstances and needs.'],
     approachText: 'A clear understanding of each patient’s condition, an open discussion of options, and individual needs guide the care-planning process.',
@@ -83,6 +85,7 @@ const profileCopy = {
     role: 'اختصاصي جراحة العظام والمفاصل', lead: 'يمارس تخصصه منذ عام 1997 مع تركيز على جراحة الركبة واستبدال المفاصل وإصابات الركبة الرياضية.',
     appointment: 'تنسيق المراجعة', journeyAction: 'المسيرة المهنية', registration: 'رقم التسجيل الطبي',
     portraitAlt: 'صورة الدكتور علي رضا صباغيان', portraitLabel: 'الخبرة والمعرفة والاهتمام بالمريض', focusLabel: 'التركيز المهني', focus: 'جراحة الركبة واستبدال المفاصل',
+    clinicalKicker: 'في غرفة العمليات', clinicalTitle: 'خبرة سريرية راسخة في الممارسة اليومية', clinicalText: 'تشكّل جانب مهم من المسيرة المهنية للدكتور صباغيان داخل غرفة العمليات وبالتعاون مع الفرق العلاجية، حيث تمثل الدقة والتنسيق واتخاذ القرار المسؤول عناصر أساسية.', clinicalAlt: 'الدكتور علي رضا صباغيان داخل غرفة العمليات', clinicalCaption: 'في بيئة غرفة العمليات',
     navLabel: 'في هذه الصفحة', nav: ['النهج العلاجي', 'الخلفية والنشاط العلمي', 'الخبرة الجراحية', 'مجالات العمل'],
     approachKicker: 'النهج المهني', approachTitle: ['لكل مريض', 'ظروفه واحتياجاته الخاصة.'],
     approachText: 'فهم حالة المريض بدقة ومناقشة الخيارات بوضوح ومراعاة الاحتياجات الفردية هي عناصر أساسية في التخطيط للعلاج.',
@@ -132,7 +135,7 @@ export function AboutProfile({ locale }: { locale: Locale }) {
           <div className={styles.actions}><Link className={styles.primaryButton} href={`/${locale}/contact`}><CalendarDays aria-hidden="true" />{copy.appointment}<Arrow aria-hidden="true" /></Link><a className={styles.secondaryButton} href="#professional-journey">{copy.journeyAction}<ArrowDown aria-hidden="true" /></a></div>
           <div className={styles.registration}><ShieldCheck aria-hidden="true" /><span>{copy.registration} <strong dir="ltr">{locale === 'fa' ? '۳۱۲۴۲' : '31242'}</strong></span></div>
         </div>
-        <figure className={styles.portrait}><div className={styles.portraitBackdrop} aria-hidden="true" /><span className={styles.portraitLabel} aria-hidden="true">{copy.portraitLabel}</span><Image src="/images/portraits/dr-sabbaghian-navy-suit.png" alt={copy.portraitAlt} fill sizes="(max-width: 760px) 92vw, (max-width: 1100px) 44vw, 520px" quality={90} preload className={styles.portraitImage} /><figcaption className={styles.portraitCaption}><span>{copy.focusLabel}</span><strong>{copy.focus}</strong><DiagonalArrow aria-hidden="true" /></figcaption></figure>
+        <figure className={styles.portrait}><Image src="/images/about/dr-sabbaghian-white-coat.jpg" alt={copy.portraitAlt} fill sizes="(max-width: 760px) 92vw, (max-width: 1100px) 44vw, 520px" quality={90} preload className={styles.portraitImage} /><figcaption className={styles.portraitCaption}><span>{copy.focusLabel}</span><strong>{copy.focus}</strong><DiagonalArrow aria-hidden="true" /></figcaption></figure>
       </div>
       <nav className={styles.sectionNav} aria-label={copy.navLabel}><span>{copy.navLabel}</span>{copy.nav.map((label, index) => <a href={`#${sectionIds[index]}`} key={label}>{label}</a>)}</nav>
     </div></section>
@@ -140,6 +143,8 @@ export function AboutProfile({ locale }: { locale: Locale }) {
     <section id="care-approach" className={`${styles.shell} ${styles.section}`} aria-labelledby="approach-title"><div className={styles.approachHeading}><div><span className={styles.eyebrow}>{copy.approachKicker}</span><h2 id="approach-title">{copy.approachTitle[0]}<br />{copy.approachTitle[1]}</h2></div><p>{copy.approachText}</p></div>
       <div className={styles.principles}>{copy.principles.map(([title, text], index) => { const Icon = principleIcons[index]; return <article className={styles.principle} key={title}><div className={styles.principleTop}><Icon aria-hidden="true" /><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span></div><h3>{title}</h3><p>{text}</p></article> })}</div>
     </section>
+
+    <section className={`${styles.shell} ${styles.clinicalSection}`} aria-labelledby="clinical-title"><figure className={styles.clinicalPhoto}><Image src="/images/about/dr-sabbaghian-operating-room.png" alt={copy.clinicalAlt} fill sizes="(max-width: 760px) calc(100vw - 2.5rem), 540px" quality={92} /><figcaption>{copy.clinicalCaption}</figcaption></figure><div className={styles.clinicalCopy}><span className={styles.eyebrow}>{copy.clinicalKicker}</span><h2 id="clinical-title">{copy.clinicalTitle}</h2><p>{copy.clinicalText}</p><div aria-hidden="true"><span>01</span><span>02</span></div></div></section>
 
     <section id="professional-journey" className={styles.journeySection} aria-labelledby="journey-title"><div className={`${styles.shell} ${styles.journeyGrid}`}><div><span className={styles.eyebrow}>{copy.journeyKicker}</span><h2 id="journey-title">{copy.journeyTitle[0]}<br />{copy.journeyTitle[1]}</h2>
       <ol className={styles.timeline}>{copy.milestones.map(([label, title, text]) => <li key={label}><span className={styles.milestoneLabel} dir="auto">{label}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol><p className={styles.hospitalHistory}>{copy.hospitalHistory}</p></div>
