@@ -2,6 +2,7 @@ import type { Access, CollectionConfig } from 'payload'
 
 import { authenticated } from '../access/authenticated'
 import { translationWorkflowFields } from '../fields/translationWorkflow'
+import { revalidateGallery, revalidateGalleryDelete } from '../hooks/revalidateSiteContent'
 
 const publishedWithConsent: Access = ({ req: { user } }) => {
   if (user) return true
@@ -10,9 +11,13 @@ const publishedWithConsent: Access = ({ req: { user } }) => {
 
 export const GalleryItems: CollectionConfig = {
   slug: 'gallery-items',
-  labels: { singular: 'Gallery item', plural: 'Gallery' },
+  labels: { singular: 'تصویر گالری', plural: 'گالری تصاویر' },
   access: { create: authenticated, delete: authenticated, read: publishedWithConsent, update: authenticated },
-  admin: { defaultColumns: ['title', 'category', 'publishingConsent', '_status'], useAsTitle: 'title' },
+  admin: {
+    defaultColumns: ['title', 'category', 'publishingConsent', '_status'],
+    group: false,
+    useAsTitle: 'title',
+  },
   fields: [
     { name: 'title', type: 'text', localized: true, required: true },
     { name: 'caption', type: 'textarea', localized: true },
@@ -32,5 +37,6 @@ export const GalleryItems: CollectionConfig = {
     { name: 'sortOrder', type: 'number', defaultValue: 0 },
     ...translationWorkflowFields,
   ],
+  hooks: { afterChange: [revalidateGallery], afterDelete: [revalidateGalleryDelete] },
   versions: { drafts: { autosave: { interval: 300 }, schedulePublish: true }, maxPerDoc: 30 },
 }

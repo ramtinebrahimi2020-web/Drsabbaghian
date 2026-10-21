@@ -8,6 +8,7 @@ import { SmoothScroll } from '@/components/site/SmoothScroll'
 import { isLocale, localeConfig } from '@/lib/siteContent'
 import { content } from '@/lib/siteContent'
 import { siteURL } from '@/lib/seo'
+import { getCMSGlobals, globalLinks } from '@/lib/cms'
 import '../globals.css'
 
 export function generateStaticParams() { return [{ locale: 'fa' }, { locale: 'en' }, { locale: 'ar' }] }
@@ -27,5 +28,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function LocaleLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
   const { locale } = await params
   if (!isLocale(locale)) notFound()
-  return <html lang={locale} dir={localeConfig[locale].dir} data-scroll-behavior="smooth" suppressHydrationWarning><head><InitTheme /></head><body><Providers><SmoothScroll /><SiteHeader locale={locale} />{children}<SiteFooter locale={locale} /></Providers></body></html>
+  const globals = await getCMSGlobals(locale)
+  return <html lang={locale} dir={localeConfig[locale].dir} data-scroll-behavior="smooth" suppressHydrationWarning><head><InitTheme /></head><body><Providers><SmoothScroll /><SiteHeader locale={locale} links={globalLinks(globals.header, locale)} />{children}<SiteFooter locale={locale} links={globalLinks(globals.footer, locale)} /></Providers></body></html>
 }

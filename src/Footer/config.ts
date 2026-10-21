@@ -5,6 +5,10 @@ import { revalidateFooter } from './hooks/revalidateFooter'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
+  label: 'پاورقی سایت',
+  admin: {
+    group: false,
+  },
   access: {
     read: () => true,
   },

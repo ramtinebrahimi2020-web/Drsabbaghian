@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import {
-  ArrowDown, ArrowLeft, ArrowRight, ArrowUpLeft, ArrowUpRight, BookOpen, Building2,
-  CalendarDays, GraduationCap, HeartHandshake, MapPin, MessageCircle, Microscope, ShieldCheck,
+  ArrowDown, ArrowLeft, ArrowRight, ArrowUpLeft, ArrowUpRight, Award, BookOpen, Building2,
+  CalendarDays, GraduationCap, HeartHandshake, MapPin, Maximize2, MessageCircle, Microscope, ShieldCheck,
 } from 'lucide-react'
 import type { Locale } from '@/lib/siteContent'
 import styles from './AboutProfile.module.css'
@@ -14,7 +14,7 @@ const profileCopy = {
     appointment: 'هماهنگی مراجعه', journeyAction: 'مسیر حرفه‌ای', registration: 'شماره نظام پزشکی',
     portraitAlt: 'پرتره دکتر علیرضا صباغیان', portraitLabel: 'تجربه، دانش و توجه به بیمار', focusLabel: 'تمرکز حرفه‌ای', focus: 'جراحی زانو و تعویض مفصل',
     clinicalKicker: 'در فضای جراحی', clinicalTitle: 'تجربه بالینی، در متن کار روزمره', clinicalText: 'بخش مهمی از مسیر حرفه‌ای دکتر صباغیان در اتاق عمل و در کنار تیم‌های درمانی شکل گرفته است؛ فضایی که دقت، هماهنگی و تصمیم‌گیری مسئولانه در آن اهمیت اساسی دارد.', clinicalAlt: 'دکتر علیرضا صباغیان در فضای اتاق عمل', clinicalCaption: 'در محیط اتاق عمل',
-    navLabel: 'در این صفحه', nav: ['رویکرد درمانی', 'سوابق و فعالیت علمی', 'تجربه جراحی', 'حوزه‌های فعالیت'],
+    navLabel: 'در این صفحه', nav: ['رویکرد درمانی', 'سوابق و فعالیت علمی', 'تجربه جراحی', 'حوزه‌های فعالیت', 'گواهینامه‌ها'],
     approachKicker: 'رویکرد حرفه‌ای', approachTitle: ['هر بیمار،', 'شرایط و نیازهای خودش را دارد.'],
     approachText: 'شناخت دقیق شرایط بیمار، گفت‌وگوی روشن درباره گزینه‌ها و درنظرگرفتن نیازهای فردی، بخش اصلی مسیر تصمیم‌گیری درمانی است.',
     principles: [
@@ -41,6 +41,16 @@ const profileCopy = {
       ['۰۱ / تعویض مفصل', 'مفصل زانو و لگن', 'ارزیابی و جراحی تعویض مفصل، با توجه به شرایط و نیاز هر بیمار.', 'مشاهده حوزه تخصصی'],
       ['۰۲ / آرتروسکوپی', 'آسیب‌های ورزشی زانو', 'بررسی مشکلات داخل مفصل و آسیب‌های لیگامانی زانو.', 'مشاهده حوزه تخصصی'],
     ],
+    certificatesKicker: 'سوابق آموزشی مستند', certificatesTitle: 'گواهینامه‌ها و دوره‌های تخصصی', certificatesIntro: 'منتخبی از دوره‌های تکمیلی و برنامه‌های آموزشی بین‌المللی در حوزه جراحی زانو، لگن و تعویض مفصل.', certificateView: 'مشاهده تصویر کامل مدرک',
+    certificates: [
+      ['۲۰۱۰', 'بیمارستان تخصصی اشتولتس‌آلپه، اتریش', 'دوره فلوشیپ جراحی زانو', 'یک ماه حضور بالینی در تیم زانو و مشارکت در طیفی از اعمال آرتروسکوپی، ترمیم رباط و غضروف، استئوتومی و تعویض اولیه و رویژن مفصل زانو.', '/images/certificates/stolzalpe-knee-fellowship-2010.jpg', 'گواهی دوره فلوشیپ جراحی زانو در بیمارستان اشتولتس‌آلپه اتریش'],
+      ['۲۰۱۵', 'Smith & Nephew Healthcare Education', 'دوره رویژن تعویض مفصل زانو MENA', 'گواهی شرکت در دوره تخصصی بازنگری و تعویض مجدد مفصل زانو که در ۱۰ آوریل ۲۰۱۵ در تهران برگزار شد.', '/images/certificates/smith-nephew-revision-knee-2015.jpg', 'گواهی دوره رویژن تعویض مفصل زانو اسمیت اند نفیو در سال ۲۰۱۵'],
+      ['۲۰۱۳', 'Smith & Nephew و Zollar Medical', 'دوره آموزشی تعویض مفصل زانو؛ از اولیه تا رویژن', 'گواهی حضور در دوره آموزشی تعویض مفصل زانو از جراحی اولیه تا رویژن، برگزارشده در ۳۱ اکتبر و ۱ نوامبر ۲۰۱۳ در بیمارستان شفا یحیاییان تهران.', '/images/certificates/knee-arthroplasty-primary-revision-2013.jpg', 'گواهی دوره تعویض مفصل زانو از جراحی اولیه تا رویژن در سال ۲۰۱۳'],
+      ['۲۰۱۳', 'Stryker MedEd', 'مسترکلاس رویژن مفصل لگن و زانو', 'گواهی شرکت در سومین مسترکلاس جراحی رویژن تعویض مفصل لگن و زانو، برگزارشده در نوامبر ۲۰۱۳.', '/images/certificates/stryker-revision-arthroplasty-2013.jpg', 'گواهی مسترکلاس رویژن مفصل لگن و زانو استرایکر در سال ۲۰۱۳'],
+      ['۲۰۱۱', 'EFORT', 'نشست اروپایی جراحی مفصل لگن', 'گواهی حضور در برنامه «وضعیت کنونی و رویکردهای آینده در تعویض کامل مفصل لگن» با ۱۳٫۵ ساعت آموزش علمی معتبر.', '/images/certificates/efort-european-hip-meeting-2011.jpg', 'گواهی نشست اروپایی جراحی مفصل لگن EFORT در سال ۲۰۱۱'],
+      ['۲۰۰۹–۲۰۱۰', 'Zimmer Institute', 'دوره‌های پیشرفته تعویض مفصل لگن و زانو', 'دو گواهی آموزشی شامل مسترکلاس تعویض اولیه و رویژن زانو در سال ۲۰۰۹ و دوره جامع تعویض و بازسازی سطح مفصل لگن در سال ۲۰۱۰.', '/images/certificates/zimmer-arthroplasty-courses-2009-2010.jpg', 'دو گواهی دوره‌های پیشرفته تعویض مفصل لگن و زانو از Zimmer Institute'],
+      ['۲۰۰۴', 'GIAMON، انجمن آلمان و ایران', 'جراحی کم‌تهاجمی و فناوری نوین در ارتوپدی', 'گواهی شرکت در نخستین کنگره بین‌المللی GIAMON با موضوع جراحی کم‌تهاجمی و فناوری‌های نوین در ارتوپدی و پزشکی ورزشی، تهران.', '/images/certificates/giamon-minimally-invasive-orthopedics-2004.jpg', 'گواهی نخستین کنگره بین‌المللی GIAMON در سال ۲۰۰۴'],
+    ],
     visitKicker: 'ارتباط و مراجعه', visitTitle: ['برای قدم بعدی،', 'با پذیرش هماهنگ کنید.'], visitText: 'اطلاعات تماس، نشانی مطب و راهنمای مراجعه در صفحه تماس در دسترس شماست.', visitAction: 'اطلاعات مطب و هماهنگی مراجعه',
     locations: [['مطب دکتر صباغیان', 'تهران، خیابان ولیعصر، بالاتر از خیابان ظفر', 'یکشنبه و سه‌شنبه · ساعت ۱۴ تا ۱۹'], ['محل‌های فعالیت بیمارستانی', 'بیمارستان لاله و بیمارستان تهران کلینیک', 'زمان و محل مراجعه با پذیرش هماهنگ می‌شود.']],
   },
@@ -50,7 +60,7 @@ const profileCopy = {
     appointment: 'Arrange a consultation', journeyAction: 'Professional journey', registration: 'Medical registration no.',
     portraitAlt: 'Portrait of Dr. Alireza Sabbaghian', portraitLabel: 'Experience, knowledge, and attention to each patient', focusLabel: 'Professional focus', focus: 'Knee surgery and joint replacement',
     clinicalKicker: 'In the operating room', clinicalTitle: 'Clinical experience, grounded in daily practice', clinicalText: 'An important part of Dr. Sabbaghian’s professional journey has developed in the operating room alongside clinical teams, where precision, coordination, and responsible decisions are essential.', clinicalAlt: 'Dr. Alireza Sabbaghian in an operating room', clinicalCaption: 'In the operating-room environment',
-    navLabel: 'On this page', nav: ['Care approach', 'Background and scientific work', 'Surgical experience', 'Fields of practice'],
+    navLabel: 'On this page', nav: ['Care approach', 'Background and scientific work', 'Surgical experience', 'Fields of practice', 'Certificates'],
     approachKicker: 'Professional approach', approachTitle: ['Each patient has individual', 'circumstances and needs.'],
     approachText: 'A clear understanding of each patient’s condition, an open discussion of options, and individual needs guide the care-planning process.',
     principles: [
@@ -77,6 +87,16 @@ const profileCopy = {
       ['01 / Joint replacement', 'Knee and hip joints', 'Assessment and joint replacement surgery, based on each patient’s condition and needs.', 'View specialist field'],
       ['02 / Arthroscopy', 'Sports-related knee injuries', 'Assessment of intra-articular and ligament injuries of the knee.', 'View specialist field'],
     ],
+    certificatesKicker: 'Documented specialist education', certificatesTitle: 'Certificates and advanced training', certificatesIntro: 'A selection of international educational programmes and advanced training in knee surgery, hip surgery, and joint replacement.', certificateView: 'View full certificate',
+    certificates: [
+      ['2010', 'Stolzalpe Orthopaedic Hospital, Austria', 'Knee surgery fellowship', 'A one-month clinical fellowship with the knee team, covering arthroscopy, cartilage and ligament repair, osteotomy, and primary and revision knee arthroplasty.', '/images/certificates/stolzalpe-knee-fellowship-2010.jpg', 'Knee fellowship certificate from Stolzalpe Orthopaedic Hospital in Austria'],
+      ['2015', 'Smith & Nephew Healthcare Education', 'MENA Revision Knee Course', 'Certificate of attendance for the specialist revision knee arthroplasty course held in Tehran on 10 April 2015.', '/images/certificates/smith-nephew-revision-knee-2015.jpg', 'Smith and Nephew MENA Revision Knee Course certificate from 2015'],
+      ['2013', 'Smith & Nephew and Zollar Medical', 'Knee arthroplasty: primary to revision', 'Certificate for the instructional course on knee arthroplasty from primary to revision, held at Shafa Yahyaian Hospital in Tehran on 31 October and 1 November 2013.', '/images/certificates/knee-arthroplasty-primary-revision-2013.jpg', 'Knee arthroplasty primary-to-revision course certificate from 2013'],
+      ['2013', 'Stryker MedEd', 'Revision arthroplasty of the hip and knee', 'Certificate of attendance for the third masterclass on revision arthroplasty of the hip and knee, held in November 2013.', '/images/certificates/stryker-revision-arthroplasty-2013.jpg', 'Stryker revision arthroplasty of the hip and knee masterclass certificate from 2013'],
+      ['2011', 'EFORT', 'European Hip Meeting', 'Attendance at “State of the Art and Future Concepts in Total Hip Arthroplasty,” an accredited programme comprising 13.5 hours of scientific education.', '/images/certificates/efort-european-hip-meeting-2011.jpg', 'EFORT European Hip Meeting certificate from 2011'],
+      ['2009–2010', 'Zimmer Institute', 'Advanced hip and knee arthroplasty courses', 'Two certificates covering the NexGen primary and revision knee masterclass in 2009 and a comprehensive metal-on-metal total hip and resurfacing arthroplasty course in 2010.', '/images/certificates/zimmer-arthroplasty-courses-2009-2010.jpg', 'Two Zimmer Institute certificates for advanced hip and knee arthroplasty courses'],
+      ['2004', 'GIAMON, German–Iranian Association', 'Minimally invasive orthopedics and modern technology', 'Certificate of participation in the first International GIAMON Congress on minimally invasive surgery and modern technology in orthopedics and sports medicine, held in Tehran.', '/images/certificates/giamon-minimally-invasive-orthopedics-2004.jpg', 'First International GIAMON Congress certificate from 2004'],
+    ],
     visitKicker: 'Contact and visits', visitTitle: ['For the next step,', 'contact the coordination team.'], visitText: 'Contact details, the clinic address, and visit information are available on the contact page.', visitAction: 'Clinic details and visit coordination',
     locations: [['Dr. Sabbaghian’s clinic', 'Valiasr Street, above Zafar Street, Tehran', 'Sunday and Tuesday · 14:00–19:00 Tehran time'], ['Hospital practice', 'Laleh Hospital and Tehran Clinic Hospital', 'The time and location are confirmed by the coordination team.']],
   },
@@ -86,7 +106,7 @@ const profileCopy = {
     appointment: 'تنسيق المراجعة', journeyAction: 'المسيرة المهنية', registration: 'رقم التسجيل الطبي',
     portraitAlt: 'صورة الدكتور علي رضا صباغيان', portraitLabel: 'الخبرة والمعرفة والاهتمام بالمريض', focusLabel: 'التركيز المهني', focus: 'جراحة الركبة واستبدال المفاصل',
     clinicalKicker: 'في غرفة العمليات', clinicalTitle: 'خبرة سريرية راسخة في الممارسة اليومية', clinicalText: 'تشكّل جانب مهم من المسيرة المهنية للدكتور صباغيان داخل غرفة العمليات وبالتعاون مع الفرق العلاجية، حيث تمثل الدقة والتنسيق واتخاذ القرار المسؤول عناصر أساسية.', clinicalAlt: 'الدكتور علي رضا صباغيان داخل غرفة العمليات', clinicalCaption: 'في بيئة غرفة العمليات',
-    navLabel: 'في هذه الصفحة', nav: ['النهج العلاجي', 'الخلفية والنشاط العلمي', 'الخبرة الجراحية', 'مجالات العمل'],
+    navLabel: 'في هذه الصفحة', nav: ['النهج العلاجي', 'الخلفية والنشاط العلمي', 'الخبرة الجراحية', 'مجالات العمل', 'الشهادات'],
     approachKicker: 'النهج المهني', approachTitle: ['لكل مريض', 'ظروفه واحتياجاته الخاصة.'],
     approachText: 'فهم حالة المريض بدقة ومناقشة الخيارات بوضوح ومراعاة الاحتياجات الفردية هي عناصر أساسية في التخطيط للعلاج.',
     principles: [
@@ -113,6 +133,16 @@ const profileCopy = {
       ['01 / استبدال المفصل', 'مفصل الركبة والورك', 'تقييم الحالة وجراحة استبدال المفصل وفق احتياجات كل مريض.', 'عرض المجال التخصصي'],
       ['02 / تنظير الركبة', 'إصابات الركبة الرياضية', 'تقييم المشكلات داخل المفصل وإصابات أربطة الركبة.', 'عرض المجال التخصصي'],
     ],
+    certificatesKicker: 'تعليم تخصصي موثّق', certificatesTitle: 'الشهادات والدورات التخصصية', certificatesIntro: 'مجموعة مختارة من البرامج التعليمية الدولية والتدريب المتقدم في جراحة الركبة والورك واستبدال المفاصل.', certificateView: 'عرض الشهادة كاملة',
+    certificates: [
+      ['2010', 'مستشفى شتولتس‌آلبه لجراحة العظام، النمسا', 'زمالة في جراحة الركبة', 'زمالة سريرية لمدة شهر مع فريق الركبة شملت تنظير المفصل وإصلاح الغضاريف والأربطة وقطع العظم وعمليات الاستبدال الأولية والتصحيحية للركبة.', '/images/certificates/stolzalpe-knee-fellowship-2010.jpg', 'شهادة زمالة جراحة الركبة من مستشفى شتولتس‌آلبه في النمسا'],
+      ['2015', 'Smith & Nephew Healthcare Education', 'دورة الشرق الأوسط وشمال أفريقيا لتصحيح مفصل الركبة', 'شهادة حضور الدورة التخصصية في جراحة المراجعة لاستبدال مفصل الركبة، التي أُقيمت في طهران بتاريخ 10 أبريل 2015.', '/images/certificates/smith-nephew-revision-knee-2015.jpg', 'شهادة دورة مراجعة مفصل الركبة من Smith and Nephew لعام 2015'],
+      ['2013', 'Smith & Nephew وZollar Medical', 'استبدال مفصل الركبة: من الجراحة الأولية إلى المراجعة', 'شهادة حضور الدورة التعليمية في استبدال مفصل الركبة من الجراحة الأولية إلى المراجعة، في مستشفى شفا يحيائيان بطهران يومي 31 أكتوبر و1 نوفمبر 2013.', '/images/certificates/knee-arthroplasty-primary-revision-2013.jpg', 'شهادة دورة استبدال مفصل الركبة من الجراحة الأولية إلى المراجعة لعام 2013'],
+      ['2013', 'Stryker MedEd', 'مراجعة استبدال مفصلي الورك والركبة', 'شهادة حضور الدورة المتقدمة الثالثة في جراحات مراجعة استبدال مفصلي الورك والركبة، التي أُقيمت في نوفمبر 2013.', '/images/certificates/stryker-revision-arthroplasty-2013.jpg', 'شهادة دورة Stryker في مراجعة مفصلي الورك والركبة لعام 2013'],
+      ['2011', 'EFORT', 'الملتقى الأوروبي لمفصل الورك', 'حضور برنامج «أحدث الممارسات والمفاهيم المستقبلية في الاستبدال الكامل لمفصل الورك» بواقع 13.5 ساعة من التعليم العلمي المعتمد.', '/images/certificates/efort-european-hip-meeting-2011.jpg', 'شهادة الملتقى الأوروبي لمفصل الورك EFORT لعام 2011'],
+      ['2009–2010', 'Zimmer Institute', 'دورات متقدمة في استبدال مفصلي الورك والركبة', 'شهادتان تشملان الدورة المتقدمة في الاستبدال الأولي والتصحيحي للركبة عام 2009، والدورة الشاملة في استبدال مفصل الورك وإعادة تسطيحه عام 2010.', '/images/certificates/zimmer-arthroplasty-courses-2009-2010.jpg', 'شهادتان من Zimmer Institute لدورات متقدمة في مفصلي الورك والركبة'],
+      ['2004', 'GIAMON، الجمعية الألمانية الإيرانية', 'الجراحة طفيفة التوغل والتقنيات الحديثة في العظام', 'شهادة مشاركة في المؤتمر الدولي الأول لـGIAMON حول الجراحة طفيفة التوغل والتكنولوجيا الحديثة في جراحة العظام والطب الرياضي، في طهران.', '/images/certificates/giamon-minimally-invasive-orthopedics-2004.jpg', 'شهادة المؤتمر الدولي الأول لـGIAMON لعام 2004'],
+    ],
     visitKicker: 'التواصل والمراجعة', visitTitle: ['للخطوة التالية،', 'تواصل مع فريق التنسيق.'], visitText: 'تتوفر معلومات الاتصال وعنوان العيادة ودليل المراجعة في صفحة التواصل.', visitAction: 'معلومات العيادة وتنسيق المراجعة',
     locations: [['عيادة الدكتور صباغيان', 'طهران، شارع وليعصر، أعلى شارع ظفر', 'الأحد والثلاثاء · من 14:00 إلى 19:00'], ['مواقع العمل في المستشفيات', 'مستشفى لاله ومستشفى طهران كلينيك', 'يؤكد فريق التنسيق موعد المراجعة ومكانها.']],
   },
@@ -120,9 +150,9 @@ const profileCopy = {
 
 const principleIcons = [Microscope, MessageCircle, HeartHandshake]
 const fieldImages = ['/images/services/knee-replacement-atlas.png', '/images/services/knee-anatomy-atlas.png']
-const sectionIds = ['care-approach', 'professional-journey', 'surgical-experience', 'practice-fields']
+const sectionIds = ['care-approach', 'professional-journey', 'surgical-experience', 'practice-fields', 'certificates']
 
-export function AboutProfile({ locale }: { locale: Locale }) {
+export function AboutProfile({ locale, page }: { locale: Locale; page?: { title: string; lead: string } }) {
   const copy = profileCopy[locale]
   const Arrow = locale === 'en' ? ArrowRight : ArrowLeft
   const DiagonalArrow = locale === 'en' ? ArrowUpRight : ArrowUpLeft
@@ -131,7 +161,7 @@ export function AboutProfile({ locale }: { locale: Locale }) {
     <section className={styles.hero} aria-labelledby="about-title"><div className={styles.shell}>
       <nav className={styles.breadcrumb} aria-label={copy.breadcrumb[1]}><Link href={`/${locale}`}>{copy.breadcrumb[0]}</Link><span aria-hidden="true">/</span><span aria-current="page">{copy.breadcrumb[1]}</span></nav>
       <div className={styles.heroGrid}>
-        <div className={styles.intro}><span className={styles.eyebrow}>{copy.heroKicker}</span><h1 id="about-title">{copy.name[0]}<br /><span>{copy.name[1]}</span></h1><p className={styles.role}>{copy.role}</p><p className={styles.lead}>{copy.lead}</p>
+        <div className={styles.intro}><span className={styles.eyebrow}>{copy.heroKicker}</span><h1 id="about-title">{page?.title ?? <>{copy.name[0]}<br /><span>{copy.name[1]}</span></>}</h1><p className={styles.role}>{copy.role}</p><p className={styles.lead}>{page?.lead || copy.lead}</p>
           <div className={styles.actions}><Link className={styles.primaryButton} href={`/${locale}/contact`}><CalendarDays aria-hidden="true" />{copy.appointment}<Arrow aria-hidden="true" /></Link><a className={styles.secondaryButton} href="#professional-journey">{copy.journeyAction}<ArrowDown aria-hidden="true" /></a></div>
           <div className={styles.registration}><ShieldCheck aria-hidden="true" /><span>{copy.registration} <strong dir="ltr">{locale === 'fa' ? '۳۱۲۴۲' : '31242'}</strong></span></div>
         </div>
@@ -154,6 +184,18 @@ export function AboutProfile({ locale }: { locale: Locale }) {
     <section id="surgical-experience" className={styles.experienceSection} aria-labelledby="experience-title"><div className={styles.shell}><div className={styles.experienceHeading}><div><span className={styles.eyebrow}>{copy.experienceKicker}</span><h2 id="experience-title">{copy.experienceTitle}</h2></div><p>{copy.experienceSource}</p></div><dl className={styles.stats}>{copy.stats.map(([qualifier, value, title]) => <div key={title}><dt>{title}</dt><dd><span>{qualifier}</span><strong dir="ltr">{value}</strong></dd></div>)}</dl></div></section>
 
     <section id="practice-fields" className={`${styles.shell} ${styles.section}`} aria-labelledby="fields-title"><div className={styles.sectionHeading}><div><span className={styles.eyebrow}>{copy.fieldsKicker}</span><h2 id="fields-title">{copy.fieldsTitle}</h2></div><Link className={styles.textLink} href={`/${locale}/services`}>{copy.servicesLink}<Arrow aria-hidden="true" /></Link></div><div className={styles.fields}>{copy.fields.map(([label, title, text, action], index) => <Link className={styles.field} href={`/${locale}/services#service-0${index + 1}`} key={title}><div className={styles.fieldImage}><Image src={fieldImages[index]} alt="" fill sizes="(max-width: 420px) 100px, 150px" quality={90} /></div><div><span className={styles.fieldNumber}>{label}</span><h3>{title}</h3><p>{text}</p><span className={styles.fieldAction}>{action}<DiagonalArrow aria-hidden="true" /></span></div></Link>)}</div></section>
+
+    <section id="certificates" className={styles.certificatesSection} aria-labelledby="certificates-title"><div className={styles.shell}>
+      <div className={styles.certificatesHeading}><div><span className={styles.eyebrow}>{copy.certificatesKicker}</span><h2 id="certificates-title">{copy.certificatesTitle}</h2></div><p>{copy.certificatesIntro}</p></div>
+      {(() => { const [year, issuer, title, text, image, alt] = copy.certificates[0]; return <article className={styles.featuredCertificate}>
+        <a className={styles.certificateImageLink} href={image} target="_blank" rel="noreferrer" aria-label={`${copy.certificateView}: ${title}`}><div className={styles.featuredCertificateImage}><Image src={image} alt={alt} fill sizes="(max-width: 760px) calc(100vw - 2.5rem), 520px" quality={90} /></div><span className={styles.imageAction}><Maximize2 aria-hidden="true" />{copy.certificateView}</span></a>
+        <div className={styles.featuredCertificateCopy}><div className={styles.certificateMeta}><span dir="auto">{year}</span><span>{issuer}</span></div><Award aria-hidden="true" /><h3>{title}</h3><p>{text}</p></div>
+      </article> })()}
+      <div className={styles.certificatesGrid}>{copy.certificates.slice(1).map(([year, issuer, title, text, image, alt]) => <article className={styles.certificateCard} key={image}>
+        <a className={styles.certificateImageLink} href={image} target="_blank" rel="noreferrer" aria-label={`${copy.certificateView}: ${title}`}><div className={styles.certificateImage}><Image src={image} alt={alt} fill sizes="(max-width: 760px) calc(100vw - 2.5rem), (max-width: 1100px) 45vw, 350px" quality={88} /></div><span className={styles.imageAction}><Maximize2 aria-hidden="true" />{copy.certificateView}</span></a>
+        <div className={styles.certificateCopy}><div className={styles.certificateMeta}><span dir="auto">{year}</span><span>{issuer}</span></div><h3>{title}</h3><p>{text}</p></div>
+      </article>)}</div>
+    </div></section>
 
     <section className={`${styles.shell} ${styles.visitSection}`} aria-labelledby="visit-title"><div className={styles.visitIntro}><span className={styles.eyebrow}>{copy.visitKicker}</span><h2 id="visit-title">{copy.visitTitle[0]}<br />{copy.visitTitle[1]}</h2><p>{copy.visitText}</p><Link className={styles.primaryButton} href={`/${locale}/contact`}>{copy.visitAction}<Arrow aria-hidden="true" /></Link></div><div className={styles.locations}>{copy.locations.map(([title, text, meta], index) => { const Icon = index === 0 ? MapPin : Building2; return <div className={styles.location} key={title}><Icon aria-hidden="true" /><div><h3>{title}</h3><p>{text}</p><span>{meta}</span></div></div> })}</div></section>
   </main>

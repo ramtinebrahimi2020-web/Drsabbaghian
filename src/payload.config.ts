@@ -1,7 +1,9 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import sharp from 'sharp'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
+import { fa } from '@payloadcms/translations/languages/fa'
 import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
@@ -24,12 +26,17 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   admin: {
     components: {
-      // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below.
       beforeLogin: ['@/components/BeforeLogin'],
-      // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below.
-      beforeDashboard: ['@/components/BeforeDashboard'],
+      beforeNavLinks: ['@/components/AdminNavigation'],
+      graphics: {
+        Icon: '@/components/AdminBrand#AdminIcon',
+        Logo: '@/components/AdminBrand#AdminLogo',
+      },
+      views: {
+        dashboard: {
+          Component: '@/components/BeforeDashboard',
+        },
+      },
     },
     importMap: {
       baseDir: path.resolve(dirname),
@@ -58,14 +65,28 @@ export default buildConfig({
       ],
     },
   },
+  i18n: {
+    fallbackLanguage: 'fa',
+    supportedLanguages: { fa },
+  },
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URL || '',
-    },
-  }),
-  collections: [Pages, Services, Posts, Categories, GalleryItems, Locations, Media, Users],
+  folders: {
+    browseByFolder: false,
+  },
+  db:
+    process.env.NODE_ENV === 'production'
+      ? postgresAdapter({
+          pool: {
+            connectionString: process.env.DATABASE_URL || '',
+          },
+        })
+      : sqliteAdapter({
+          client: {
+            url: process.env.SQLITE_URL || 'file:./dr-sabbaghian.db',
+          },
+        }),
+  collections: [Pages, Services, Locations, Posts, Categories, GalleryItems, Media, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins,

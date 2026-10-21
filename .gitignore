@@ -27,3 +27,8 @@ node_modules/
 # Local TypeScript and test output
 *.tsbuildinfo
 coverage/
+
+# Local Payload development database
+*.db
+*.db-shm
+*.db-wal

@@ -24,6 +24,7 @@ import {
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
+  labels: { singular: 'صفحه', plural: 'صفحه‌های سایت' },
   access: {
     create: authenticated,
     delete: authenticated,
@@ -39,6 +40,7 @@ export const Pages: CollectionConfig<'pages'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
+    group: false,
     livePreview: {
       url: ({ data, req }) =>
         generatePreviewPath({

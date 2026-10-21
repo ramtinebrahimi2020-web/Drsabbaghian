@@ -4,6 +4,8 @@ import { isLocale, locales } from '@/lib/siteContent'
 import { localeAlternates } from '@/lib/seo'
 import { ArticleDetail } from './ArticleDetail'
 import { AdditionalArticleDetail, additionalArticleSlugs, getAdditionalArticle } from './AdditionalArticleDetail'
+import { getCMSPost } from '@/lib/cms'
+import { CMSPostDetail } from '@/components/site/CMSContentDetail'
 
 const metadata = {
   fa: { title: 'چه زمانی بررسی تعویض مفصل زانو مطرح می‌شود؟', description: 'راهنمای عمومی درباره نشانه‌ها، ارزیابی تخصصی و تصمیم‌گیری پیش از تعویض مفصل زانو.' },
@@ -21,6 +23,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; article: string }> }): Promise<Metadata> {
   const { locale, article } = await params
   if (!isLocale(locale)) return {}
+  const post = await getCMSPost(locale, article)
+  if (post) return { title: post.meta?.title || post.title, description: post.meta?.description, alternates: localeAlternates(locale, `journal/${article}`) }
   if (article === 'knee-replacement-evaluation') return { ...metadata[locale], alternates: localeAlternates(locale, `journal/${article}`) }
   const additional = locale === 'fa' ? getAdditionalArticle(article) : undefined
   if (!additional) return {}
@@ -30,6 +34,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function ArticlePage({ params }: { params: Promise<{ locale: string; article: string }> }) {
   const { locale, article } = await params
   if (!isLocale(locale)) notFound()
+  const post = await getCMSPost(locale, article)
+  if (post) return <CMSPostDetail locale={locale} post={post} />
   if (article === 'knee-replacement-evaluation') return <ArticleDetail locale={locale} />
   if (locale === 'fa' && getAdditionalArticle(article)) return <AdditionalArticleDetail article={article as typeof additionalArticleSlugs[number]} />
   notFound()

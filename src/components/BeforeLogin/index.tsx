@@ -1,12 +1,13 @@
 import React from 'react'
 
+import './index.scss'
+
 const BeforeLogin: React.FC = () => {
   return (
-    <div>
-      <p>
-        <b>Welcome to your dashboard!</b>
-        {' This is where site admins will log in to manage your website.'}
-      </p>
+    <div className="admin-login-intro" dir="rtl">
+      <span className="admin-login-intro__eyebrow">پنل مدیریت وب‌سایت</span>
+      <h1>دکتر علیرضا صباغیان</h1>
+      <p>برای مدیریت محتوا، نام کاربری و رمز عبور خود را وارد کنید.</p>
     </div>
   )
 }

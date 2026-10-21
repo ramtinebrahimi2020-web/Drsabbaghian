@@ -75,8 +75,8 @@ export const seed = async ({
     collection: 'users',
     depth: 0,
     where: {
-      email: {
-        equals: 'demo-author@example.com',
+      username: {
+        equals: 'demo-author',
       },
     },
   })
@@ -103,8 +103,9 @@ export const seed = async ({
       collection: 'users',
       data: {
         name: 'Demo Author',
-        email: 'demo-author@example.com',
+        username: 'demo-author',
         password: 'password',
+        role: 'editor',
       },
     }),
     payload.create({

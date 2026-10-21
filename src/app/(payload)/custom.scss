@@ -1,0 +1,64 @@
+@import '@payloadcms/ui/scss';
+
+@font-face {
+  font-display: swap;
+  font-family: 'Dana Admin';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/DanaFaNum-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Dana Admin';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/DanaFaNum-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Dana Admin';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/DanaFaNum-DemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Dana Admin';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/DanaFaNum-Bold.woff2') format('woff2');
+}
+
+:root {
+  --font-body: 'Dana Admin', Tahoma, sans-serif;
+}
+
+html body,
+.payload-admin,
+button,
+input,
+select,
+textarea {
+  font-family: 'Dana Admin', Tahoma, sans-serif;
+}
+
+.login {
+  background:
+    radial-gradient(circle at 15% 10%, rgb(11 102 112 / 10%), transparent 32%),
+    var(--theme-bg);
+}
+
+.login__brand {
+  margin-bottom: 24px;
+}
+
+.login form {
+  text-align: right;
+}
+
+.nav__wrap {
+  padding-inline: 14px;
+}

@@ -69,10 +69,10 @@ export interface Config {
   collections: {
     pages: Page;
     services: Service;
+    locations: Location;
     posts: Post;
     categories: Category;
     'gallery-items': GalleryItem;
-    locations: Location;
     media: Media;
     users: User;
     redirects: Redirect;
@@ -94,10 +94,10 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
+    locations: LocationsSelect<false> | LocationsSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     'gallery-items': GalleryItemsSelect<false> | GalleryItemsSelect<true>;
-    locations: LocationsSelect<false> | LocationsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
@@ -141,20 +141,18 @@ export interface Config {
 }
 export interface UserAuthOperations {
   forgotPassword: {
-    email: string;
-    password: string;
+    username: string;
   };
   login: {
-    email: string;
     password: string;
+    username: string;
   };
   registerFirstUser: {
-    email: string;
     password: string;
+    username: string;
   };
   unlock: {
-    email: string;
-    password: string;
+    username: string;
   };
 }
 /**
@@ -447,11 +445,12 @@ export interface Category {
  */
 export interface User {
   id: number;
-  name?: string | null;
-  role?: ('admin' | 'editor' | 'medical-reviewer' | 'language-reviewer') | null;
+  name: string;
+  role: 'admin' | 'editor' | 'medical-reviewer' | 'language-reviewer';
   updatedAt: string;
   createdAt: string;
-  email: string;
+  email?: string | null;
+  username: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;
   salt?: string | null;
@@ -851,34 +850,6 @@ export interface Service {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "gallery-items".
- */
-export interface GalleryItem {
-  id: number;
-  title: string;
-  caption?: string | null;
-  image: number | Media;
-  category: 'clinic' | 'scientific' | 'portrait';
-  eventDate?: string | null;
-  publishingConsent: boolean;
-  sortOrder?: number | null;
-  translationStatus?: {
-    fa?: ('not-started' | 'draft' | 'medical-review' | 'language-review' | 'approved') | null;
-    en?: ('not-started' | 'draft' | 'medical-review' | 'language-review' | 'approved') | null;
-    ar?: ('not-started' | 'draft' | 'medical-review' | 'language-review' | 'approved') | null;
-  };
-  medicalReview?: {
-    status?: ('pending' | 'changes-requested' | 'approved') | null;
-    reviewedBy?: (number | null) | User;
-    reviewedAt?: string | null;
-    note?: string | null;
-  };
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "locations".
  */
 export interface Location {
@@ -897,6 +868,34 @@ export interface Location {
   mapUrl?: string | null;
   mapEmbedUrl?: string | null;
   active?: boolean | null;
+  sortOrder?: number | null;
+  translationStatus?: {
+    fa?: ('not-started' | 'draft' | 'medical-review' | 'language-review' | 'approved') | null;
+    en?: ('not-started' | 'draft' | 'medical-review' | 'language-review' | 'approved') | null;
+    ar?: ('not-started' | 'draft' | 'medical-review' | 'language-review' | 'approved') | null;
+  };
+  medicalReview?: {
+    status?: ('pending' | 'changes-requested' | 'approved') | null;
+    reviewedBy?: (number | null) | User;
+    reviewedAt?: string | null;
+    note?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery-items".
+ */
+export interface GalleryItem {
+  id: number;
+  title: string;
+  caption?: string | null;
+  image: number | Media;
+  category: 'clinic' | 'scientific' | 'portrait';
+  eventDate?: string | null;
+  publishingConsent: boolean;
   sortOrder?: number | null;
   translationStatus?: {
     fa?: ('not-started' | 'draft' | 'medical-review' | 'language-review' | 'approved') | null;
@@ -1112,6 +1111,10 @@ export interface PayloadLockedDocument {
         value: number | Service;
       } | null)
     | ({
+        relationTo: 'locations';
+        value: number | Location;
+      } | null)
+    | ({
         relationTo: 'posts';
         value: number | Post;
       } | null)
@@ -1122,10 +1125,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'gallery-items';
         value: number | GalleryItem;
-      } | null)
-    | ({
-        relationTo: 'locations';
-        value: number | Location;
       } | null)
     | ({
         relationTo: 'media';
@@ -1382,6 +1381,45 @@ export interface ServicesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "locations_select".
+ */
+export interface LocationsSelect<T extends boolean = true> {
+  name?: T;
+  type?: T;
+  address?: T;
+  visitNote?: T;
+  phones?:
+    | T
+    | {
+        number?: T;
+        id?: T;
+      };
+  appointmentUrl?: T;
+  mapUrl?: T;
+  mapEmbedUrl?: T;
+  active?: T;
+  sortOrder?: T;
+  translationStatus?:
+    | T
+    | {
+        fa?: T;
+        en?: T;
+        ar?: T;
+      };
+  medicalReview?:
+    | T
+    | {
+        status?: T;
+        reviewedBy?: T;
+        reviewedAt?: T;
+        note?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -1457,45 +1495,6 @@ export interface GalleryItemsSelect<T extends boolean = true> {
   category?: T;
   eventDate?: T;
   publishingConsent?: T;
-  sortOrder?: T;
-  translationStatus?:
-    | T
-    | {
-        fa?: T;
-        en?: T;
-        ar?: T;
-      };
-  medicalReview?:
-    | T
-    | {
-        status?: T;
-        reviewedBy?: T;
-        reviewedAt?: T;
-        note?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "locations_select".
- */
-export interface LocationsSelect<T extends boolean = true> {
-  name?: T;
-  type?: T;
-  address?: T;
-  visitNote?: T;
-  phones?:
-    | T
-    | {
-        number?: T;
-        id?: T;
-      };
-  appointmentUrl?: T;
-  mapUrl?: T;
-  mapEmbedUrl?: T;
-  active?: T;
   sortOrder?: T;
   translationStatus?:
     | T
@@ -1620,6 +1619,7 @@ export interface UsersSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   email?: T;
+  username?: T;
   resetPasswordToken?: T;
   resetPasswordExpiration?: T;
   salt?: T;
@@ -2042,16 +2042,16 @@ export interface TaskSchedulePublish {
           value: number | Service;
         } | null)
       | ({
+          relationTo: 'locations';
+          value: number | Location;
+        } | null)
+      | ({
           relationTo: 'posts';
           value: number | Post;
         } | null)
       | ({
           relationTo: 'gallery-items';
           value: number | GalleryItem;
-        } | null)
-      | ({
-          relationTo: 'locations';
-          value: number | Location;
         } | null);
     global?: string | null;
     user?: {

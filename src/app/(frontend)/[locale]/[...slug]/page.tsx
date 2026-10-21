@@ -12,6 +12,8 @@ import { InternationalPatients } from './InternationalPatients'
 import { JournalHub } from './JournalHub'
 import { GalleryShowcase } from './GalleryShowcase'
 import { ContactExperience } from './ContactExperience'
+import { RenderBlocks } from '@/blocks/RenderBlocks'
+import { getCMSGallery, getCMSLocations, getCMSPage, getCMSPosts, getCMSServices, lexicalText, mediaURL } from '@/lib/cms'
 
 const pages = ['about', 'services', 'international-patients', 'journal', 'gallery', 'contact']
 
@@ -20,22 +22,64 @@ export function generateStaticParams() { return locales.flatMap((locale) => page
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string[] }> }): Promise<Metadata> {
   const { locale, slug } = await params
   if (!isLocale(locale)) return {}
-  const page = pageContent[locale][slug.join('/')]
-  return page ? { title: page.title, description: page.lead, alternates: localeAlternates(locale, slug.join('/')) } : {}
+  const key = slug.join('/')
+  const staticPage = pageContent[locale][key]
+  const cmsPage = await getCMSPage(locale, key)
+  const description = cmsPage?.meta?.description || lexicalText(cmsPage?.hero?.richText) || staticPage?.lead
+  return cmsPage || staticPage ? { title: cmsPage?.meta?.title || cmsPage?.title || staticPage?.title, description, alternates: localeAlternates(locale, key) } : {}
 }
 
 export default async function InnerPage({ params }: { params: Promise<{ locale: string; slug: string[] }> }) {
   const { locale, slug } = await params
   if (!isLocale(locale)) notFound()
   const key = slug.join('/')
-  const page = pageContent[locale][key]
+  const staticPage = pageContent[locale][key]
+  const cmsPage = await getCMSPage(locale, key)
+  if (!staticPage && !cmsPage) notFound()
+  const page = staticPage ? {
+    ...staticPage,
+    title: cmsPage?.title || staticPage.title,
+    lead: cmsPage?.meta?.description || lexicalText(cmsPage?.hero?.richText) || staticPage.lead,
+  } : null
+  if (key === 'about') return <AboutProfile locale={locale} page={page ?? undefined} />
+  if (key === 'services' && page) {
+    const services = await getCMSServices(locale)
+    return <ServicesAtlas locale={locale} page={page} services={services.map((service) => ({ title: service.title, text: service.summary, slug: service.slug, image: mediaURL(service.heroImage) }))} />
+  }
+  if (key === 'international-patients' && page) return <InternationalPatients locale={locale} page={page} />
+  if (key === 'journal' && page) {
+    const posts = await getCMSPosts(locale)
+    return <JournalHub locale={locale} page={page} posts={posts.map((post) => ({
+      title: post.title,
+      text: post.meta?.description || lexicalText(post.content).slice(0, 190),
+      href: `/${locale}/journal/${post.slug}`,
+      image: mediaURL(post.heroImage) || mediaURL(post.meta?.image),
+      category: post.categories?.map((category) => typeof category === 'object' ? category.title : '').filter(Boolean).join('، '),
+    }))} />
+  }
+  if (key === 'gallery' && page) {
+    const gallery = await getCMSGallery(locale)
+    return <GalleryShowcase locale={locale} page={page} items={gallery.flatMap((item) => {
+      const src = mediaURL(item.image)
+      return src ? [{ id: `gallery-${item.id}`, src, category: item.category, title: item.title, text: item.caption || '', meta: item.eventDate ? new Intl.DateTimeFormat(locale).format(new Date(item.eventDate)) : '' }] : []
+    })} />
+  }
+  if (key === 'contact' && page) {
+    const locations = await getCMSLocations(locale)
+    const contactPage = locations.length ? { ...page, sections: locations.map((location) => ({
+      title: location.name,
+      text: location.address,
+      items: [location.type === 'office' ? (locale === 'fa' ? 'مطب تخصصی' : locale === 'ar' ? 'عيادة تخصصية' : 'Specialist clinic') : (locale === 'fa' ? 'مرکز جراحی' : locale === 'ar' ? 'مركز جراحي' : 'Surgical centre'), location.visitNote || ''],
+      phones: location.type === 'office'
+        ? Array.from(new Set([...(location.phones?.map(({ number }) => number) ?? []), '09354915039']))
+        : location.phones?.map(({ number }) => number) ?? [],
+      mapEmbedUrl: location.mapEmbedUrl || undefined,
+      mapUrl: location.mapUrl || undefined,
+    })) } : page
+    return <ContactExperience locale={locale} page={contactPage} />
+  }
+  if (cmsPage) return <main><section className="inner-hero"><div className="shell inner-hero-grid"><div><h1>{cmsPage.title}</h1>{cmsPage.meta?.description && <p>{cmsPage.meta.description}</p>}</div></div></section><RenderBlocks blocks={cmsPage.layout} /></main>
   if (!page) notFound()
-  if (key === 'about') return <AboutProfile locale={locale} />
-  if (key === 'services') return <ServicesAtlas locale={locale} page={page} />
-  if (key === 'international-patients') return <InternationalPatients locale={locale} page={page} />
-  if (key === 'journal') return <JournalHub locale={locale} page={page} />
-  if (key === 'gallery') return <GalleryShowcase locale={locale} page={page} />
-  if (key === 'contact') return <ContactExperience locale={locale} page={page} />
   const Arrow = locale === 'en' ? ArrowRight : ArrowLeft
   const isContact = key === 'contact'
   const isAbout = key === 'about'

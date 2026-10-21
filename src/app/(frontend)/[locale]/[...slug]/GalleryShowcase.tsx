@@ -19,6 +19,7 @@ import styles from './GalleryShowcase.module.css'
 type GalleryShowcaseProps = {
   locale: Locale
   page: { kicker: string; title: string; lead: string; sections: Array<{ title: string; text: string }> }
+  items?: Array<{ id: string; src: string; category: string; title: string; text: string; meta: string }>
 }
 
 const copy = {
@@ -82,10 +83,10 @@ const media = [
   { id: 'recovery', src: '/images/gallery/postoperative-walking-recovery.webp', icon: CheckCircle2 },
 ]
 
-export function GalleryShowcase({ locale, page }: GalleryShowcaseProps) {
+export function GalleryShowcase({ locale, page, items }: GalleryShowcaseProps) {
   const t = copy[locale]
   const DirectionIcon = locale === 'en' ? MoveUpRight : MoveUpLeft
-  const stories = media.map((item, index) => ({ ...item, category: t.stories[index][0], title: t.stories[index][1], text: t.stories[index][2], meta: t.stories[index][3] }))
+  const stories = items?.length ? items.map((item, index) => ({ ...item, icon: media[index % media.length].icon })) : media.map((item, index) => ({ ...item, category: t.stories[index][0], title: t.stories[index][1], text: t.stories[index][2], meta: t.stories[index][3] }))
 
   return <main className={styles.page}>
     <section className={styles.hero} aria-labelledby="gallery-title"><div className={styles.shell}>
@@ -95,7 +96,7 @@ export function GalleryShowcase({ locale, page }: GalleryShowcaseProps) {
           <div className={styles.actions}><a className={styles.primaryButton} href="#service-gallery"><Images aria-hidden="true" />{t.browse}<ArrowDown aria-hidden="true" /></a><a className={styles.secondaryButton} href="#media-policy">{t.policy}<ShieldCheck aria-hidden="true" /></a></div>
           <div className={styles.assurances}><span><ShieldCheck aria-hidden="true" />{t.private}</span><span><Video aria-hidden="true" />{t.mediaReady}</span></div>
         </div>
-        <div className={styles.heroVisual} aria-label={t.heroLabel}><figure className={styles.heroMain}><Image src={stories[0].src} alt={stories[0].title} fill sizes="(max-width: 760px) 90vw, 43vw" priority /></figure><figure className={styles.heroInset}><Image src={stories[3].src} alt={stories[3].title} fill sizes="(max-width: 760px) 44vw, 19vw" /></figure><div className={styles.heroBadge}><strong>{t.count}</strong><span>{t.categoriesCount.split('\n').map((line) => <span key={line}>{line}</span>)}</span></div></div>
+        <div className={styles.heroVisual} aria-label={t.heroLabel}><figure className={styles.heroMain}><Image src={stories[0].src} alt={stories[0].title} fill sizes="(max-width: 760px) 90vw, 43vw" priority /></figure><figure className={styles.heroInset}><Image src={stories[stories.length - 1].src} alt={stories[stories.length - 1].title} fill sizes="(max-width: 760px) 44vw, 19vw" /></figure><div className={styles.heroBadge}><strong>{items?.length ?? t.count}</strong><span>{t.categoriesCount.split('\n').map((line) => <span key={line}>{line}</span>)}</span></div></div>
       </div>
       <nav className={styles.sectionNav} aria-label={t.categories}><span>{t.categories}</span>{stories.map((story) => <a key={story.id} href={`#${story.id}`}>{story.category}</a>)}</nav>
     </div></section>

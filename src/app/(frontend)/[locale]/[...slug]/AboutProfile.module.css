@@ -4,6 +4,8 @@
   --profile-accent: #8e173b;
   --profile-photo: #e6ece2;
   --profile-photo-line: #ccd8c8;
+  --certificate-mat: #e7ebe3;
+  --certificate-shadow: rgb(18 48 31 / .1);
   color: var(--site-text);
   background: var(--site-bg);
 }
@@ -14,6 +16,8 @@
   --profile-accent: #eaa6b8;
   --profile-photo: #254637;
   --profile-photo-line: #466753;
+  --certificate-mat: #203629;
+  --certificate-shadow: rgb(0 0 0 / .28);
 }
 
 .shell { width: min(72rem, calc(100% - 3rem)); margin-inline: auto; }
@@ -140,6 +144,32 @@
 .field h3 { font-size: 1.4rem; margin-top: .5rem; }
 .field p { margin-top: .5rem; font-size: .83rem; }
 .fieldAction { display: flex; justify-content: space-between; align-items: center; gap: .4rem; margin-top: 1rem; font-size: .76rem; color: var(--site-green); font-weight: 600; }
+.certificatesSection { padding-block: 5.5rem; background: var(--profile-paper); scroll-margin-top: 2rem; }
+.certificatesHeading { display: grid; grid-template-columns: 1.1fr 1fr; align-items: end; gap: 5rem; margin-bottom: 2.5rem; }
+.certificatesHeading > p { max-width: 31rem; font-size: .94rem; }
+.featuredCertificate { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(18rem, .9fr); overflow: hidden; min-height: 36rem; border: 1px solid var(--site-line); border-radius: 1.25rem; background: var(--profile-card); box-shadow: 0 1.2rem 3.5rem var(--certificate-shadow); }
+.certificateImageLink { position: relative; display: block; min-width: 0; background: var(--certificate-mat); overflow: hidden; }
+.certificateImageLink:focus-visible { outline: 3px solid var(--site-green); outline-offset: -5px; }
+.featuredCertificateImage, .certificateImage { position: relative; height: 100%; min-height: 26rem; }
+.featuredCertificateImage img, .certificateImage img { object-fit: contain; padding: 1.25rem; transition: transform .35s ease, filter .35s ease; }
+.certificateImageLink:hover img, .certificateImageLink:focus-visible img { transform: scale(1.018); filter: brightness(.9); }
+.imageAction { position: absolute; z-index: 1; inset-inline: 1rem; bottom: 1rem; display: inline-flex; align-items: center; justify-content: center; gap: .55rem; width: fit-content; min-height: 2.75rem; padding: .55rem .9rem; border: 1px solid rgb(255 255 255 / .35); border-radius: .65rem; background: rgb(13 34 23 / .88); color: #fff; box-shadow: 0 5px 20px rgb(0 0 0 / .16); font-size: .75rem; font-weight: 600; backdrop-filter: blur(8px); }
+.imageAction svg { width: 1rem; height: 1rem; }
+.featuredCertificateCopy { position: relative; display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem, 4vw, 4rem); }
+.featuredCertificateCopy > svg { width: 2.2rem; height: 2.2rem; margin-block: 2rem 1.2rem; color: var(--profile-accent); }
+.featuredCertificateCopy h3 { font-size: clamp(1.65rem, 2.5vw, 2.2rem); line-height: 1.55; }
+.featuredCertificateCopy p { margin-top: .9rem; font-size: .9rem; }
+.certificateMeta { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem .9rem; color: var(--site-muted); font-size: .73rem; }
+.certificateMeta span:first-child { display: inline-flex; align-items: center; min-height: 1.8rem; padding-inline: .7rem; border-radius: 999px; background: var(--site-soft); color: var(--site-green); font-weight: 700; }
+.certificateMeta span + span { padding-inline-start: .9rem; border-inline-start: 1px solid var(--site-line); }
+.certificatesGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-top: 1.25rem; }
+.certificateCard { overflow: hidden; border: 1px solid var(--site-line); border-radius: 1rem; background: var(--profile-card); transition: border-color .2s, box-shadow .2s, transform .2s; }
+.certificateCard:hover { border-color: var(--profile-photo-line); box-shadow: 0 .8rem 2rem var(--certificate-shadow); transform: translateY(-3px); }
+.certificateImage { min-height: 18rem; height: 18rem; }
+.certificateImage img { padding: .8rem; }
+.certificateCopy { padding: 1.3rem 1.35rem 1.5rem; }
+.certificateCopy h3 { margin-top: .9rem; font-size: 1.15rem; line-height: 1.65; }
+.certificateCopy p { margin-top: .55rem; font-size: .8rem; line-height: 1.9; }
 .visitSection { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; padding-block: 3.5rem 5rem; border-top: 1px solid var(--site-line); }
 .visitIntro p { margin-block: 1rem 1.5rem; max-width: 28rem; font-size: .9rem; }
 .locations { align-self: center; }
@@ -160,6 +190,8 @@
   .field { grid-template-columns: 7rem 1fr; gap: 1rem; }
   .field h3 { font-size: 1.2rem; }
   .sectionNav { gap: 1.4rem; }
+  .certificatesHeading { gap: 3rem; }
+  .certificatesGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 760px) {
@@ -213,6 +245,17 @@
   .fields { grid-template-columns: 1fr; gap: 1rem; }
   .field { grid-template-columns: 7.5rem 1fr; }
   .fieldImage { height: 11rem; }
+  .certificatesSection { padding-block: 3.5rem; }
+  .certificatesHeading { grid-template-columns: 1fr; align-items: start; gap: 1rem; margin-bottom: 1.6rem; }
+  .certificatesHeading > p { font-size: .9rem; }
+  .featuredCertificate { grid-template-columns: 1fr; min-height: 0; }
+  .featuredCertificateImage { height: 29rem; min-height: 0; }
+  .featuredCertificateCopy { padding: 1.75rem; }
+  .featuredCertificateCopy > svg { margin-block: 1.5rem 1rem; }
+  .featuredCertificateCopy h3 { font-size: 1.55rem; }
+  .certificatesGrid { grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; }
+  .certificateImage { height: min(75vw, 24rem); min-height: 18rem; }
+  .certificateCard:hover { transform: none; }
   .visitSection { grid-template-columns: 1fr; padding-block: 2.5rem 3.5rem; gap: 1rem; }
 }
 
@@ -228,9 +271,12 @@
   .field h3 { font-size: 1.14rem; }
   .field p { font-size: .8rem; }
   .fieldAction { font-size: .7rem; }
+  .featuredCertificateImage { height: 24rem; }
+  .certificateImage { height: 20rem; }
+  .certificateMeta span + span { width: 100%; padding-inline-start: 0; border: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .page *, .page *::before, .page *::after { animation: none !important; transition: none !important; }
-  .page a:hover, .field:hover .fieldImage img { transform: none; }
+  .page a:hover, .field:hover .fieldImage img, .certificateImageLink:hover img, .certificateCard:hover { transform: none; }
 }

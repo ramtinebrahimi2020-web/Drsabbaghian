@@ -1,0 +1,33 @@
+.admin-brand {
+  align-items: center;
+  display: flex;
+
+  &--logo {
+    justify-content: center;
+
+    img {
+      height: auto;
+      max-width: 224px;
+      width: 100%;
+    }
+  }
+
+  &--icon {
+    background: #0b6670;
+    border-radius: 7px;
+    box-sizing: border-box;
+    color: #fff;
+    flex: 0 0 24px;
+    height: 24px;
+    justify-content: center;
+    min-width: 24px;
+    overflow: hidden;
+    width: 24px;
+
+    svg {
+      display: block;
+      height: 15px;
+      width: 15px;
+    }
+  }
+}

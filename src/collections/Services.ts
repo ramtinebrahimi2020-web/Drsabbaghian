@@ -4,12 +4,17 @@ import { slugField } from 'payload'
 import { authenticated } from '../access/authenticated'
 import { authenticatedOrPublished } from '../access/authenticatedOrPublished'
 import { translationWorkflowFields } from '../fields/translationWorkflow'
+import { revalidateService, revalidateServiceDelete } from '../hooks/revalidateSiteContent'
 
 export const Services: CollectionConfig = {
   slug: 'services',
-  labels: { singular: 'Specialized service', plural: 'Specialized services' },
+  labels: { singular: 'خدمت تخصصی', plural: 'خدمات تخصصی' },
   access: { create: authenticated, delete: authenticated, read: authenticatedOrPublished, update: authenticated },
-  admin: { defaultColumns: ['title', 'category', '_status', 'updatedAt'], useAsTitle: 'title' },
+  admin: {
+    defaultColumns: ['title', 'category', '_status', 'updatedAt'],
+    group: false,
+    useAsTitle: 'title',
+  },
   fields: [
     { name: 'title', type: 'text', localized: true, required: true },
     { name: 'summary', type: 'textarea', localized: true, required: true },
@@ -29,5 +34,6 @@ export const Services: CollectionConfig = {
     ...translationWorkflowFields,
     slugField(),
   ],
+  hooks: { afterChange: [revalidateService], afterDelete: [revalidateServiceDelete] },
   versions: { drafts: { autosave: { interval: 300 }, schedulePublish: true }, maxPerDoc: 50 },
 }

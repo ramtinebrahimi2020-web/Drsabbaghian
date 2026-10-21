@@ -6,6 +6,7 @@ import { slugField } from 'payload'
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
+  labels: { singular: 'دسته‌بندی', plural: 'دسته‌بندی مقاله‌ها' },
   access: {
     create: authenticated,
     delete: authenticated,
@@ -13,6 +14,7 @@ export const Categories: CollectionConfig = {
     update: authenticated,
   },
   admin: {
+    group: false,
     useAsTitle: 'title',
   },
   fields: [

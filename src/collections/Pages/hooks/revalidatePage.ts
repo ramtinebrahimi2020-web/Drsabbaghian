@@ -4,6 +4,9 @@ import { revalidatePath, revalidateTag } from 'next/cache'
 
 import type { Page } from '../../../payload-types'
 
+const locales = ['fa', 'en', 'ar'] as const
+const revalidatePagePaths = (slug: string) => locales.forEach((locale) => revalidatePath(slug === 'home' ? `/${locale}` : `/${locale}/${slug}`))
+
 export const revalidatePage: CollectionAfterChangeHook<Page> = ({
   doc,
   previousDoc,
@@ -15,7 +18,7 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
 
       payload.logger.info(`Revalidating page at path: ${path}`)
 
-      revalidatePath(path)
+      revalidatePagePaths(doc.slug)
       revalidateTag('pages-sitemap', 'max')
     }
 
@@ -25,7 +28,7 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
 
       payload.logger.info(`Revalidating old page at path: ${oldPath}`)
 
-      revalidatePath(oldPath)
+      revalidatePagePaths(previousDoc.slug)
       revalidateTag('pages-sitemap', 'max')
     }
   }
@@ -34,8 +37,7 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
 
 export const revalidateDelete: CollectionAfterDeleteHook<Page> = ({ doc, req: { context } }) => {
   if (!context.disableRevalidate) {
-    const path = doc?.slug === 'home' ? '/' : `/${doc?.slug}`
-    revalidatePath(path)
+    revalidatePagePaths(doc.slug)
     revalidateTag('pages-sitemap', 'max')
   }
 

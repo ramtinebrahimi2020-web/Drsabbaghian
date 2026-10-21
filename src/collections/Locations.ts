@@ -3,12 +3,17 @@ import type { CollectionConfig } from 'payload'
 import { authenticated } from '../access/authenticated'
 import { authenticatedOrPublished } from '../access/authenticatedOrPublished'
 import { translationWorkflowFields } from '../fields/translationWorkflow'
+import { revalidateLocation, revalidateLocationDelete } from '../hooks/revalidateSiteContent'
 
 export const Locations: CollectionConfig = {
   slug: 'locations',
-  labels: { singular: 'Location', plural: 'Visit locations' },
+  labels: { singular: 'مرکز مراجعه', plural: 'مطب و مراکز مراجعه' },
   access: { create: authenticated, delete: authenticated, read: authenticatedOrPublished, update: authenticated },
-  admin: { defaultColumns: ['name', 'type', '_status', 'updatedAt'], useAsTitle: 'name' },
+  admin: {
+    defaultColumns: ['name', 'type', '_status', 'updatedAt'],
+    group: false,
+    useAsTitle: 'name',
+  },
   fields: [
     { name: 'name', type: 'text', localized: true, required: true },
     {
@@ -31,5 +36,6 @@ export const Locations: CollectionConfig = {
     { name: 'sortOrder', type: 'number', defaultValue: 0 },
     ...translationWorkflowFields,
   ],
+  hooks: { afterChange: [revalidateLocation], afterDelete: [revalidateLocationDelete] },
   versions: { drafts: { autosave: { interval: 300 }, schedulePublish: true }, maxPerDoc: 30 },
 }

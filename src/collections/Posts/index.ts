@@ -30,6 +30,7 @@ import { translationWorkflowFields } from '../../fields/translationWorkflow'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
+  labels: { singular: 'مقاله', plural: 'مقاله‌ها' },
   access: {
     create: authenticated,
     delete: authenticated,
@@ -50,6 +51,7 @@ export const Posts: CollectionConfig<'posts'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
+    group: false,
     livePreview: {
       url: ({ data, req }) =>
         generatePreviewPath({

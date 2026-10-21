@@ -19,7 +19,8 @@ import type { Locale } from '@/lib/siteContent'
 import styles from './ServicesAtlas.module.css'
 
 type ServiceSection = { title: string; text: string; items?: string[] }
-type ServicesAtlasProps = { locale: Locale; page: { kicker: string; title: string; lead: string; sections: ServiceSection[] } }
+type ServiceCard = ServiceSection & { slug: string; image?: string }
+type ServicesAtlasProps = { locale: Locale; page: { kicker: string; title: string; lead: string; sections: ServiceSection[] }; services?: ServiceCard[] }
 
 const copy = {
   fa: {
@@ -72,10 +73,11 @@ const copy = {
 const stepIcons = [ScanSearch, ClipboardCheck, HeartPulse]
 const serviceImages = ['/images/services/knee-replacement-atlas.png', '/images/services/knee-arthroscopy-clinical.png']
 
-export function ServicesAtlas({ locale, page }: ServicesAtlasProps) {
+export function ServicesAtlas({ locale, page, services }: ServicesAtlasProps) {
   const text = copy[locale]
   const ForwardArrow = locale === 'en' ? ArrowRight : ArrowLeft
   const DiagonalArrow = locale === 'en' ? MoveUpRight : MoveUpLeft
+  const cards: ServiceCard[] = services?.length ? services : page.sections.map((service, index) => ({ ...service, slug: index === 0 ? 'knee-replacement' : 'knee-arthroscopy' }))
   return <main className={`${styles.page} ${locale === 'en' ? styles.ltr : styles.rtl}`} data-locale={locale}>
     <section className={styles.hero} aria-labelledby="services-title">
       <div className={styles.shell}>
@@ -109,11 +111,11 @@ export function ServicesAtlas({ locale, page }: ServicesAtlasProps) {
     <section className={`${styles.shell} ${styles.fieldsSection}`} id="service-fields" aria-labelledby="fields-title">
       <header className={styles.sectionHeading}><div><span className={styles.eyebrow}>{text.fieldsKicker}</span><h2 id="fields-title">{text.fieldsTitle}</h2></div><p>{text.fieldsLead}</p></header>
       <div className={styles.serviceCards}>
-        {page.sections.map((service, index) => {
+        {cards.map((service, index) => {
           const Icon = index === 0 ? Bone : Activity
-          const serviceHref = index === 0 ? `/${locale}/services/knee-replacement` : `/${locale}/services/knee-arthroscopy`
+          const serviceHref = `/${locale}/services/${service.slug}`
           return <Link className={styles.serviceCard} href={serviceHref} id={`service-0${index + 1}`} key={service.title}>
-            <div className={styles.cardImage}><Image src={serviceImages[index]} alt="" fill sizes="(max-width: 760px) 100vw, 42vw" quality={90} /><span className={styles.cardNumber}>{locale === 'fa' ? `۰${index + 1}` : `0${index + 1}`}</span></div>
+            <div className={styles.cardImage}><Image src={service.image ?? serviceImages[index % serviceImages.length]} alt="" fill sizes="(max-width: 760px) 100vw, 42vw" quality={90} /><span className={styles.cardNumber}>{locale === 'fa' ? `۰${index + 1}` : `0${index + 1}`}</span></div>
             <div className={styles.cardBody}><span className={styles.cardIcon}><Icon aria-hidden="true" /></span><h3>{service.title}</h3><p>{service.text}</p><ul>{service.items?.map(item => <li key={item}><Check aria-hidden="true" />{item}</li>)}</ul><span className={styles.cardLink}>{index === 0 ? text.details : text.evaluation}<DiagonalArrow aria-hidden="true" /></span></div>
           </Link>
         })}

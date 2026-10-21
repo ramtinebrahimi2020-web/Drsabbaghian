@@ -4,6 +4,8 @@ import { isLocale, locales } from '@/lib/siteContent'
 import { localeAlternates } from '@/lib/seo'
 import { KneeReplacementDetail } from './KneeReplacementDetail'
 import { ArthroscopyDetail } from './ArthroscopyDetail'
+import { getCMSService } from '@/lib/cms'
+import { CMSServiceDetail } from '@/components/site/CMSContentDetail'
 
 const copy = {
   fa: { kicker:'خدمات تخصصی',title:'تعویض مفصل زانو',lead:'آشنایی عمومی با ارزیابی، تصمیم‌گیری و مسیر مراقبت در جراحی تعویض مفصل زانو.',sections:[['این خدمت چه زمانی بررسی می‌شود؟','زمانی که درد و محدودیت عملکرد ادامه‌دار باشد، پزشک با بررسی شرح حال، معاینه، تصاویر و درمان‌های پیشین گزینه‌های ممکن را مرور می‌کند.'],['ارزیابی پیش از تصمیم‌گیری','تصمیم جراحی تنها با یک علامت یا تصویر گرفته نمی‌شود و شرایط عمومی، نیازهای فرد و انتظارهای واقع‌بینانه نیز اهمیت دارند.'],['آمادگی و پیگیری','جزئیات آمادگی، مدت بستری و توان‌بخشی بر اساس وضعیت هر بیمار تعیین می‌شود.']],note:'اطلاعات این صفحه عمومی است و به معنای مناسب‌بودن این درمان برای هر فرد نیست.',cta:'هماهنگی ارزیابی' },
@@ -16,5 +18,5 @@ const arthroscopyMeta = {
   ar: { title: 'تنظير الركبة والإصابات الرياضية', description: 'معلومات عامة عن تقييم الإصابات داخل الركبة ودور التنظير ومسار التأهيل.' },
 }
 export function generateStaticParams(){return locales.flatMap(locale=>[{locale,service:'knee-replacement'},{locale,service:'knee-arthroscopy'}])}
-export async function generateMetadata({params}:{params:Promise<{locale:string;service:string}>}):Promise<Metadata>{const {locale,service}=await params;if(!isLocale(locale))return {};if(service==='knee-arthroscopy')return {...arthroscopyMeta[locale],alternates:localeAlternates(locale,`services/${service}`)};return service==='knee-replacement'?{title:copy[locale].title,description:copy[locale].lead,alternates:localeAlternates(locale,`services/${service}`)}:{}}
-export default async function ServicePage({params}:{params:Promise<{locale:string;service:string}>}){const {locale,service}=await params;if(!isLocale(locale))notFound();if(service==='knee-arthroscopy')return <ArthroscopyDetail locale={locale} />;if(service==='knee-replacement')return <KneeReplacementDetail locale={locale} content={copy[locale]} />;notFound()}
+export async function generateMetadata({params}:{params:Promise<{locale:string;service:string}>}):Promise<Metadata>{const {locale,service}=await params;if(!isLocale(locale))return {};const cmsService=await getCMSService(locale,service);if(cmsService)return {title:cmsService.title,description:cmsService.summary,alternates:localeAlternates(locale,`services/${service}`)};if(service==='knee-arthroscopy')return {...arthroscopyMeta[locale],alternates:localeAlternates(locale,`services/${service}`)};return service==='knee-replacement'?{title:copy[locale].title,description:copy[locale].lead,alternates:localeAlternates(locale,`services/${service}`)}:{}}
+export default async function ServicePage({params}:{params:Promise<{locale:string;service:string}>}){const {locale,service}=await params;if(!isLocale(locale))notFound();const cmsService=await getCMSService(locale,service);if(cmsService)return <CMSServiceDetail locale={locale} service={cmsService} />;if(service==='knee-arthroscopy')return <ArthroscopyDetail locale={locale} />;if(service==='knee-replacement')return <KneeReplacementDetail locale={locale} content={copy[locale]} />;notFound()}

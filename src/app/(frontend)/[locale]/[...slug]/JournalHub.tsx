@@ -22,6 +22,7 @@ import styles from './JournalHub.module.css'
 type JournalHubProps = {
   locale: Locale
   page: { kicker: string; title: string; lead: string; sections: Array<{ title: string; text: string }> }
+  posts?: Array<{ title: string; text: string; href: string; image?: string; category?: string }>
 }
 
 const copy = {
@@ -64,12 +65,13 @@ const publishedFaArticles = [
   { title: 'مراقبت‌های مهم پیش و پس از جراحی تعویض مفصل زانو', text: 'مروری آموزشی بر آمادگی، پیگیری و بازتوانی مرحله‌به‌مرحله.', href: '/fa/journal/knee-replacement-care' },
 ]
 
-export function JournalHub({ locale, page }: JournalHubProps) {
+export function JournalHub({ locale, page, posts }: JournalHubProps) {
   const text = copy[locale]
   const ForwardArrow = locale === 'en' ? ArrowRight : ArrowLeft
   const DiagonalArrow = locale === 'en' ? MoveUpRight : MoveUpLeft
-  const articleHref = `/${locale}/journal/knee-replacement-evaluation`
-  const topics = locale === 'fa' ? publishedFaArticles : page.sections.map((topic, index) => ({ ...topic, href: index === 0 ? articleHref : undefined }))
+  const articleHref = posts?.[0]?.href ?? `/${locale}/journal/knee-replacement-evaluation`
+  const topics = posts?.length ? posts : locale === 'fa' ? publishedFaArticles : page.sections.map((topic, index) => ({ ...topic, href: index === 0 ? articleHref : undefined }))
+  const featured = posts?.[0]
   return <main className={`${styles.page} ${locale === 'en' ? styles.ltr : styles.rtl}`} data-locale={locale}>
     <section className={styles.hero} aria-labelledby="journal-title">
       <div className={styles.shell}>
@@ -81,8 +83,8 @@ export function JournalHub({ locale, page }: JournalHubProps) {
             <div className={styles.assurances}><span><ShieldCheck aria-hidden="true" />{text.assurances[0]}</span><span><FileCheck2 aria-hidden="true" />{text.assurances[1]}</span></div>
           </div>
           <Link className={styles.featuredCard} href={articleHref} id="featured-article">
-            <div className={styles.featuredImage}><Image src="/images/services/knee-replacement-atlas.png" alt={text.imageAlt} fill sizes="(max-width: 760px) 92vw, 43vw" quality={90} priority /></div>
-            <div className={styles.featuredBody}><div className={styles.featuredMeta}><span>{text.featured}</span><span><Clock3 aria-hidden="true" />{text.readingTime}</span></div><strong className={styles.category}>{text.category}</strong><h2>{text.articleTitle}</h2><p>{text.articleSummary}</p><span className={styles.readLink}>{text.readArticle}<DiagonalArrow aria-hidden="true" /></span></div>
+            <div className={styles.featuredImage}><Image src={featured?.image ?? "/images/services/knee-replacement-atlas.png"} alt={featured?.title ?? text.imageAlt} fill sizes="(max-width: 760px) 92vw, 43vw" quality={90} priority /></div>
+            <div className={styles.featuredBody}><div className={styles.featuredMeta}><span>{text.featured}</span><span><Clock3 aria-hidden="true" />{text.readingTime}</span></div><strong className={styles.category}>{featured?.category ?? text.category}</strong><h2>{featured?.title ?? text.articleTitle}</h2><p>{featured?.text ?? text.articleSummary}</p><span className={styles.readLink}>{text.readArticle}<DiagonalArrow aria-hidden="true" /></span></div>
           </Link>
         </div>
         <nav className={styles.sectionNav} aria-label={text.onPage}><span>{text.onPage}</span><a href="#featured-article">{text.featuredNav}</a><a href="#journal-topics">{text.topicsNav}</a><a href="#editorial-standards">{text.standardsNav}</a></nav>

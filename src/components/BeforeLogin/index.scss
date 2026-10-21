@@ -1,0 +1,25 @@
+.admin-login-intro {
+  margin-bottom: 28px;
+  text-align: right;
+
+  &__eyebrow {
+    color: var(--theme-elevation-600);
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    color: var(--theme-text);
+    font-size: clamp(24px, 4vw, 32px);
+    line-height: 1.35;
+    margin: 0 0 10px;
+  }
+
+  p {
+    color: var(--theme-elevation-700);
+    line-height: 1.8;
+    margin: 0;
+  }
+}
