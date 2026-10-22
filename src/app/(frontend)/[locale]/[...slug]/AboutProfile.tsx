@@ -7,6 +7,8 @@ import {
 import type { Locale } from '@/lib/siteContent'
 import styles from './AboutProfile.module.css'
 
+const publicAssetHref = (src: string) => `${process.env.STATIC_PREVIEW === 'true' ? '/Drsabbaghian' : ''}${src}`
+
 const profileCopy = {
   fa: {
     breadcrumb: ['صفحه اصلی', 'درباره پزشک'], heroKicker: 'آشنایی با پزشک', name: ['دکتر علیرضا', 'صباغیان'],
@@ -188,11 +190,11 @@ export function AboutProfile({ locale, page }: { locale: Locale; page?: { title:
     <section id="certificates" className={styles.certificatesSection} aria-labelledby="certificates-title"><div className={styles.shell}>
       <div className={styles.certificatesHeading}><div><span className={styles.eyebrow}>{copy.certificatesKicker}</span><h2 id="certificates-title">{copy.certificatesTitle}</h2></div><p>{copy.certificatesIntro}</p></div>
       {(() => { const [year, issuer, title, text, image, alt] = copy.certificates[0]; return <article className={styles.featuredCertificate}>
-        <a className={styles.certificateImageLink} href={image} target="_blank" rel="noreferrer" aria-label={`${copy.certificateView}: ${title}`}><div className={styles.featuredCertificateImage}><Image src={image} alt={alt} fill sizes="(max-width: 760px) calc(100vw - 2.5rem), 520px" quality={90} /></div><span className={styles.imageAction}><Maximize2 aria-hidden="true" />{copy.certificateView}</span></a>
+        <a className={styles.certificateImageLink} href={publicAssetHref(image)} target="_blank" rel="noreferrer" aria-label={`${copy.certificateView}: ${title}`}><div className={styles.featuredCertificateImage}><Image src={image} alt={alt} fill sizes="(max-width: 760px) calc(100vw - 2.5rem), 520px" quality={90} /></div><span className={styles.imageAction}><Maximize2 aria-hidden="true" />{copy.certificateView}</span></a>
         <div className={styles.featuredCertificateCopy}><div className={styles.certificateMeta}><span dir="auto">{year}</span><span>{issuer}</span></div><Award aria-hidden="true" /><h3>{title}</h3><p>{text}</p></div>
       </article> })()}
       <div className={styles.certificatesGrid}>{copy.certificates.slice(1).map(([year, issuer, title, text, image, alt]) => <article className={styles.certificateCard} key={image}>
-        <a className={styles.certificateImageLink} href={image} target="_blank" rel="noreferrer" aria-label={`${copy.certificateView}: ${title}`}><div className={styles.certificateImage}><Image src={image} alt={alt} fill sizes="(max-width: 760px) calc(100vw - 2.5rem), (max-width: 1100px) 45vw, 350px" quality={88} /></div><span className={styles.imageAction}><Maximize2 aria-hidden="true" />{copy.certificateView}</span></a>
+        <a className={styles.certificateImageLink} href={publicAssetHref(image)} target="_blank" rel="noreferrer" aria-label={`${copy.certificateView}: ${title}`}><div className={styles.certificateImage}><Image src={image} alt={alt} fill sizes="(max-width: 760px) calc(100vw - 2.5rem), (max-width: 1100px) 45vw, 350px" quality={88} /></div><span className={styles.imageAction}><Maximize2 aria-hidden="true" />{copy.certificateView}</span></a>
         <div className={styles.certificateCopy}><div className={styles.certificateMeta}><span dir="auto">{year}</span><span>{issuer}</span></div><h3>{title}</h3><p>{text}</p></div>
       </article>)}</div>
     </div></section>
