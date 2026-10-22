@@ -1,8 +1,5 @@
 import 'server-only'
 
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
-
 import type {
   Footer,
   GalleryItem,
@@ -29,6 +26,14 @@ async function safely<T>(fallback: T, query: () => Promise<T>): Promise<T> {
 }
 
 async function payloadClient() {
+  // Payload's config requires server credentials and a database connection.
+  // Keep it out of the GitHub Pages static-preview path, where all CMS reads
+  // intentionally fall back to the built-in site content.
+  const [{ getPayload }, { default: configPromise }] = await Promise.all([
+    import('payload'),
+    import('@payload-config'),
+  ])
+
   return getPayload({ config: configPromise })
 }
 

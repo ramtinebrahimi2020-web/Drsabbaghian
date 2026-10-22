@@ -36,7 +36,7 @@ jobs:
         shell: bash
         run: |
           mv 'src/app/(payload)' .payload-routes-for-preview
-          STATIC_PREVIEW=true npx next build
+          STATIC_PREVIEW=true npx next build --webpack
           mv .payload-routes-for-preview 'src/app/(payload)'
           printf '<!doctype html><meta http-equiv="refresh" content="0; url=./fa/"><title>Dr Sabbaghian</title><a href="./fa/">Open website</a>' > out/index.html
           touch out/.nojekyll

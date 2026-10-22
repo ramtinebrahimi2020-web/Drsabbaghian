@@ -16,6 +16,7 @@ const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
 // its server configuration unchanged.
 const isStaticPreview = process.env.STATIC_PREVIEW === 'true'
 const previewBasePath = isStaticPreview ? '/Drsabbaghian' : ''
+const staticCMSModule = path.resolve(dirname, 'src/lib/cms.static.ts')
 
 const nextConfig: NextConfig = {
   ...(isStaticPreview
@@ -58,6 +59,13 @@ const nextConfig: NextConfig = {
     ],
   },
   webpack: (webpackConfig) => {
+    if (isStaticPreview) {
+      webpackConfig.resolve.alias = {
+        '@/lib/cms$': staticCMSModule,
+        ...webpackConfig.resolve.alias,
+      }
+    }
+
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
       '.js': ['.ts', '.tsx', '.js', '.jsx'],
@@ -70,6 +78,13 @@ const nextConfig: NextConfig = {
   redirects,
   turbopack: {
     root: path.resolve(dirname),
+    ...(isStaticPreview
+      ? {
+          resolveAlias: {
+            '@/lib/cms': staticCMSModule,
+          },
+        }
+      : {}),
   },
 }
 
