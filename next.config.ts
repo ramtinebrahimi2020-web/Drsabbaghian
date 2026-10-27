@@ -18,6 +18,26 @@ const isStaticPreview = process.env.STATIC_PREVIEW === 'true'
 const previewBasePath = isStaticPreview ? '/Drsabbaghian' : ''
 const staticCMSModule = path.resolve(dirname, 'src/lib/cms.static.ts')
 
+const remoteImagePatterns: NonNullable<NextConfig['images']>['remotePatterns'] = [
+  {
+    hostname: new URL(NEXT_PUBLIC_SERVER_URL).hostname,
+    pathname: '/**',
+    port: new URL(NEXT_PUBLIC_SERVER_URL).port,
+    protocol: new URL(NEXT_PUBLIC_SERVER_URL).protocol.replace(':', '') as 'http' | 'https',
+  },
+]
+
+if (process.env.S3_ENDPOINT && process.env.S3_BUCKET) {
+  const s3Endpoint = new URL(process.env.S3_ENDPOINT)
+
+  remoteImagePatterns.push({
+    hostname: s3Endpoint.hostname,
+    pathname: `/${process.env.S3_BUCKET}/**`,
+    port: s3Endpoint.port,
+    protocol: s3Endpoint.protocol.replace(':', '') as 'http' | 'https',
+  })
+}
+
 const nextConfig: NextConfig = {
   ...(isStaticPreview
     ? {
@@ -47,16 +67,7 @@ const nextConfig: NextConfig = {
       },
     ],
     qualities: [90, 100],
-    remotePatterns: [
-      ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
-        const url = new URL(item)
-
-        return {
-          hostname: url.hostname,
-          protocol: url.protocol.replace(':', '') as 'http' | 'https',
-        }
-      }),
-    ],
+    remotePatterns: remoteImagePatterns,
   },
   webpack: (webpackConfig) => {
     if (isStaticPreview) {
