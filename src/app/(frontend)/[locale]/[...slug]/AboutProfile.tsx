@@ -54,7 +54,7 @@ const profileCopy = {
       ['۲۰۰۴', 'GIAMON، انجمن آلمان و ایران', 'جراحی کم‌تهاجمی و فناوری نوین در ارتوپدی', 'گواهی شرکت در نخستین کنگره بین‌المللی GIAMON با موضوع جراحی کم‌تهاجمی و فناوری‌های نوین در ارتوپدی و پزشکی ورزشی، تهران.', '/images/certificates/giamon-minimally-invasive-orthopedics-2004.jpg', 'گواهی نخستین کنگره بین‌المللی GIAMON در سال ۲۰۰۴'],
     ],
     visitKicker: 'ارتباط و مراجعه', visitTitle: ['برای قدم بعدی،', 'با پذیرش هماهنگ کنید.'], visitText: 'اطلاعات تماس، نشانی مطب و راهنمای مراجعه در صفحه تماس در دسترس شماست.', visitAction: 'اطلاعات مطب و هماهنگی مراجعه',
-    locations: [['مطب دکتر صباغیان', 'تهران، خیابان ولیعصر، بالاتر از خیابان ظفر', 'یکشنبه و سه‌شنبه · ساعت ۱۴ تا ۱۹'], ['محل‌های فعالیت بیمارستانی', 'بیمارستان لاله و بیمارستان تهران کلینیک', 'زمان و محل مراجعه با پذیرش هماهنگ می‌شود.']],
+    locations: [['مطب دکتر صباغیان', 'تهران، خیابان ولیعصر، بالاتر از خیابان ظفر', 'یکشنبه و سه‌شنبه · ساعت ۱۵ تا ۱۹'], ['محل‌های فعالیت بیمارستانی', 'بیمارستان لاله و بیمارستان تهران کلینیک', 'زمان و محل مراجعه با پذیرش هماهنگ می‌شود.']],
   },
   en: {
     breadcrumb: ['Home', 'About the physician'], heroKicker: 'Meet the physician', name: ['Dr. Alireza', 'Sabbaghian'],
@@ -100,7 +100,7 @@ const profileCopy = {
       ['2004', 'GIAMON, German–Iranian Association', 'Minimally invasive orthopedics and modern technology', 'Certificate of participation in the first International GIAMON Congress on minimally invasive surgery and modern technology in orthopedics and sports medicine, held in Tehran.', '/images/certificates/giamon-minimally-invasive-orthopedics-2004.jpg', 'First International GIAMON Congress certificate from 2004'],
     ],
     visitKicker: 'Contact and visits', visitTitle: ['For the next step,', 'contact the coordination team.'], visitText: 'Contact details, the clinic address, and visit information are available on the contact page.', visitAction: 'Clinic details and visit coordination',
-    locations: [['Dr. Sabbaghian’s clinic', 'Valiasr Street, above Zafar Street, Tehran', 'Sunday and Tuesday · 14:00–19:00 Tehran time'], ['Hospital practice', 'Laleh Hospital and Tehran Clinic Hospital', 'The time and location are confirmed by the coordination team.']],
+    locations: [['Dr. Sabbaghian’s clinic', 'Valiasr Street, above Zafar Street, Tehran', 'Sunday and Tuesday · 15:00–19:00 Tehran time'], ['Hospital practice', 'Laleh Hospital and Tehran Clinic Hospital', 'The time and location are confirmed by the coordination team.']],
   },
   ar: {
     breadcrumb: ['الصفحة الرئيسية', 'عن الطبيب'], heroKicker: 'تعرّف إلى الطبيب', name: ['الدكتور علي رضا', 'صباغيان'],
@@ -146,7 +146,7 @@ const profileCopy = {
       ['2004', 'GIAMON، الجمعية الألمانية الإيرانية', 'الجراحة طفيفة التوغل والتقنيات الحديثة في العظام', 'شهادة مشاركة في المؤتمر الدولي الأول لـGIAMON حول الجراحة طفيفة التوغل والتكنولوجيا الحديثة في جراحة العظام والطب الرياضي، في طهران.', '/images/certificates/giamon-minimally-invasive-orthopedics-2004.jpg', 'شهادة المؤتمر الدولي الأول لـGIAMON لعام 2004'],
     ],
     visitKicker: 'التواصل والمراجعة', visitTitle: ['للخطوة التالية،', 'تواصل مع فريق التنسيق.'], visitText: 'تتوفر معلومات الاتصال وعنوان العيادة ودليل المراجعة في صفحة التواصل.', visitAction: 'معلومات العيادة وتنسيق المراجعة',
-    locations: [['عيادة الدكتور صباغيان', 'طهران، شارع وليعصر، أعلى شارع ظفر', 'الأحد والثلاثاء · من 14:00 إلى 19:00'], ['مواقع العمل في المستشفيات', 'مستشفى لاله ومستشفى طهران كلينيك', 'يؤكد فريق التنسيق موعد المراجعة ومكانها.']],
+    locations: [['عيادة الدكتور صباغيان', 'طهران، شارع وليعصر، أعلى شارع ظفر', 'الأحد والثلاثاء · من 15:00 إلى 19:00'], ['مواقع العمل في المستشفيات', 'مستشفى لاله ومستشفى طهران كلينيك', 'يؤكد فريق التنسيق موعد المراجعة ومكانها.']],
   },
 } as const
 

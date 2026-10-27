@@ -23,7 +23,7 @@ type ContactExperienceProps = { locale: Locale; page: { kicker: string; title: s
 const copy = {
   fa: {
     home: 'صفحه اصلی', contact: 'تماس و مراجعه', heroTop: 'اطلاعات تماس', heroAccent: 'و مراکز مراجعه', call: 'تماس با مطب', addresses: 'مشاهده آدرس‌ها', confirmed: 'تأیید نهایی توسط پذیرش', official: 'مسیرهای رسمی تماس',
-    clinicType: 'مطب تخصصی', clinicShort: 'ولیعصر، بالاتر از ظفر', clinicSchedule: 'یکشنبه و سه‌شنبه، ساعت ۱۴ تا ۱۹', hospitalType: 'مرکز جراحی', hospitalShort: 'بیمارستان لاله', hospitalSchedule: 'مراجعه پس از هماهنگی تیم پذیرش', locationCount: 'مرکز مراجعه\nدر تهران',
+    clinicType: 'مطب تخصصی', clinicShort: 'ولیعصر، بالاتر از ظفر', clinicSchedule: 'یکشنبه و سه‌شنبه، ساعت ۱۵ تا ۱۹', hospitalType: 'مرکز جراحی', hospitalShort: 'بیمارستان لاله', hospitalSchedule: 'مراجعه پس از هماهنگی تیم پذیرش', locationCount: 'مرکز مراجعه\nدر تهران',
     onPage: 'در این صفحه', clinicNav: 'مطب ولیعصر', hospitalNav: 'بیمارستان لاله', stepsNav: 'مسیر هماهنگی', locationKicker: 'آدرس و راه‌های تماس', locationTitle: 'مرکز مناسب مراجعه را انتخاب کنید', locationLead: 'اطلاعات هر محل مستقل نمایش داده شده است. پیش از حرکت، زمان و محل مراجعه را با پذیرش تأیید کنید.',
     locationTypes: ['مطب تخصصی و پیگیری', 'مرکز جراحی و بستری'], visitTime: 'زمان مراجعه', coordinated: 'پس از هماهنگی تیم پذیرش', mainNumber: 'شماره اصلی', mobileNumber: 'شماره همراه', line: 'خط', map: 'نقشه', openMap: 'بازکردن مسیر در Google Maps',
     before: 'پیش از مراجعه', stepsTitle: 'سه قدم برای هماهنگی مطمئن', stepsLead: 'زمان و محل نهایی مراجعه پس از تماس و بررسی درخواست شما تأیید می‌شود.',
@@ -32,7 +32,7 @@ const copy = {
   },
   en: {
     home: 'Home', contact: 'Contact and visits', heroTop: 'Contact details', heroAccent: 'and places of care', call: 'Call the clinic', addresses: 'View addresses', confirmed: 'Confirmed by reception', official: 'Official contact channels',
-    clinicType: 'Specialist clinic', clinicShort: 'Valiasr Street, above Zafar', clinicSchedule: 'Sunday and Tuesday, 14:00–19:00', hospitalType: 'Surgical centre', hospitalShort: 'Laleh Hospital', hospitalSchedule: 'Visit after confirmation by reception', locationCount: 'locations\nin Tehran',
+    clinicType: 'Specialist clinic', clinicShort: 'Valiasr Street, above Zafar', clinicSchedule: 'Sunday and Tuesday, 15:00–19:00', hospitalType: 'Surgical centre', hospitalShort: 'Laleh Hospital', hospitalSchedule: 'Visit after confirmation by reception', locationCount: 'locations\nin Tehran',
     onPage: 'On this page', clinicNav: 'Valiasr clinic', hospitalNav: 'Laleh Hospital', stepsNav: 'Coordination steps', locationKicker: 'Addresses and contact', locationTitle: 'Choose the appropriate place for your visit', locationLead: 'Each location is listed separately. Confirm the time and place with reception before travelling.',
     locationTypes: ['Specialist clinic and follow-up', 'Surgery and inpatient care'], visitTime: 'Visit time', coordinated: 'After confirmation by reception', mainNumber: 'Main number', mobileNumber: 'Mobile number', line: 'Line', map: 'Map of', openMap: 'Open directions in Google Maps',
     before: 'Before your visit', stepsTitle: 'Three steps for reliable coordination', stepsLead: 'The final time and location are confirmed after your request has been reviewed.',
@@ -41,7 +41,7 @@ const copy = {
   },
   ar: {
     home: 'الصفحة الرئيسية', contact: 'التواصل والمراجعة', heroTop: 'معلومات التواصل', heroAccent: 'ومراكز المراجعة', call: 'الاتصال بالعيادة', addresses: 'مشاهدة العناوين', confirmed: 'التأكيد النهائي من الاستقبال', official: 'قنوات التواصل الرسمية',
-    clinicType: 'العيادة التخصصية', clinicShort: 'شارع وليعصر، أعلى ظفر', clinicSchedule: 'الأحد والثلاثاء، من 14:00 إلى 19:00', hospitalType: 'مركز الجراحة', hospitalShort: 'مستشفى لاله', hospitalSchedule: 'المراجعة بعد تأكيد فريق الاستقبال', locationCount: 'مركزان للمراجعة\nفي طهران',
+    clinicType: 'العيادة التخصصية', clinicShort: 'شارع وليعصر، أعلى ظفر', clinicSchedule: 'الأحد والثلاثاء، من 15:00 إلى 19:00', hospitalType: 'مركز الجراحة', hospitalShort: 'مستشفى لاله', hospitalSchedule: 'المراجعة بعد تأكيد فريق الاستقبال', locationCount: 'مركزان للمراجعة\nفي طهران',
     onPage: 'في هذه الصفحة', clinicNav: 'عيادة وليعصر', hospitalNav: 'مستشفى لاله', stepsNav: 'خطوات التنسيق', locationKicker: 'العناوين ووسائل التواصل', locationTitle: 'اختر المكان المناسب للمراجعة', locationLead: 'تُعرض معلومات كل موقع بشكل مستقل. يرجى تأكيد موعد ومكان المراجعة مع فريق الاستقبال قبل التوجه.',
     locationTypes: ['العيادة التخصصية والمتابعة', 'الجراحة والإقامة في المستشفى'], visitTime: 'وقت المراجعة', coordinated: 'بعد التنسيق مع فريق الاستقبال', mainNumber: 'الرقم الرئيسي', mobileNumber: 'رقم الهاتف المحمول', line: 'الخط', map: 'خريطة', openMap: 'فتح المسار في خرائط Google',
     before: 'قبل المراجعة', stepsTitle: 'ثلاث خطوات لتنسيق موثوق', stepsLead: 'يُؤكد الموعد والمكان النهائيان بعد التواصل ومراجعة طلبكم.',

@@ -10,7 +10,7 @@ export const localeConfig = {
 export const content = {
   fa: {
     nav: ['صفحه اصلی', 'درباره پزشک', 'خدمات تخصصی', 'بیماران بین‌المللی', 'مجله سلامت', 'گالری', 'تماس'],
-    heroKicker: 'وب‌سایت رسمی', heroTitle: 'دکتر علیرضا صباغیان', heroText: 'متخصص جراحی استخوان و مفاصل، عضو انجمن جراحان ارتوپدی ایران و انجمن جراحان زانوی ایران، با سابقه فعالیت تخصصی از سال ۱۳۷۶ و تمرکز بر جراحی زانو و تعویض مفصل.',
+    heroKicker: 'وب‌سایت رسمی', heroTitle: 'دکتر علیرضا صباغیان', heroText: 'عضو انجمن جراحان ارتوپدی، زانو و مفصل ران (لگن) ایران',
     appointment: 'درخواست نوبت', services: 'مشاهده خدمات', experience: 'فعالیت تخصصی در ارتوپدی از سال ۱۳۷۶', serviceKicker: 'حوزه‌های اصلی فعالیت', serviceTitle: 'خدمات تخصصی ارتوپدی', serviceText: 'اطلاعات هر خدمت با هدف آشنایی اولیه و آماده‌شدن برای گفت‌وگو با پزشک ارائه می‌شود.',
     serviceCards: [{ title: 'تعویض مفصل زانو و لگن', text: 'ارزیابی، تصمیم‌گیری درمانی و آشنایی با روند مراقبت قبل و بعد از جراحی.' }, { title: 'آرتروسکوپی و آسیب‌های ورزشی زانو', text: 'بررسی آسیب‌های داخل مفصلی و انتخاب دقیق تر مسیر درمان بر اساس نوع آسیب برای بدست آوردن بهترین نتیجه' }],
     aboutKicker: 'درباره پزشک', aboutTitle: 'تجربه حرفه‌ای در کنار گفت‌وگوی روشن با بیمار', aboutText: 'دکتر علیرضا صباغیان متخصص جراحی استخوان و مفاصل هستند. معرفی سوابق و حوزه‌های فعالیت در این سایت با زبانی دقیق و بدون بزرگ‌نمایی ارائه می‌شود.', more: 'اطلاعات بیشتر',
@@ -20,7 +20,7 @@ export const content = {
   },
   en: {
     nav: ['Home', 'About the Physician', 'Specialized Services', 'International Patients', 'Health Journal', 'Gallery', 'Contact'],
-    heroKicker: 'Official Website', heroTitle: 'Dr. Alireza Sabbaghian', heroText: 'Orthopedic surgeon and member of the Iranian Orthopedic Association and the Iranian Knee Surgeons Association, with specialist practice since 1997 and a focus on knee surgery and joint replacement.',
+    heroKicker: 'Official Website', heroTitle: 'Dr. Alireza Sabbaghian', heroText: 'Member of the Iranian Orthopedic, Knee and Hip Association',
     appointment: 'Request an appointment', services: 'View services', experience: 'Specialist orthopedic practice since 1997', serviceKicker: 'Main fields of practice', serviceTitle: 'Specialized orthopedic services', serviceText: 'Each service page provides introductory information to help patients prepare for a clear discussion with their physician.',
     serviceCards: [{ title: 'Knee and hip joint replacement', text: 'Assessment, treatment decisions, and general information about care before and after surgery.' }, { title: 'Arthroscopy and sports knee injuries', text: 'Assessment of knee injuries and treatment planning based on each patient’s circumstances.' }],
     aboutKicker: 'About the physician', aboutTitle: 'Professional experience with clear patient communication', aboutText: 'Dr. Alireza Sabbaghian is a specialist in orthopedic surgery. His background and fields of practice are presented here in a factual and measured manner.', more: 'Learn more',
