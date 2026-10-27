@@ -99,6 +99,7 @@ export default buildConfig({
     defaultLocale: 'fa',
     fallback: false,
   },
+  serverURL: getServerSideURL(),
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {
